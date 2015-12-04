@@ -1,0 +1,32 @@
+// Highlights
+::selection
+  background: $black
+  color: $blood_lust
+
+::-moz-selection
+  background: $black
+  color: $blood_lust
+
+// Clearfixers
+.cf:before,
+.cf:after
+  content: ''
+  display: table
+
+.cf:after
+  clear: both
+
+// Vertical align
+// for old browsers
+.table
+  width: 100%
+  height: 100%
+  display: table
+
+.table-cell
+  vertical-align: middle
+  display: table-cell
+
+// No transtion!
+.no-trans
+  transition: none !important

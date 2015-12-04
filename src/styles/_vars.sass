@@ -1,0 +1,24 @@
+// Fonts
+$hell_vetica: 'helvetica neue', helvetica, sans-serif
+
+// Colors
+$black: #000
+$white: #fff
+$gray: #666
+$blood_lust: #660000
+
+// Speeds
+$speed: 333ms
+$speed_metal: 666ms
+
+// Easing
+$evil_ease: cubic-bezier(0.666, 0.000, 0.333, 1.000)
+
+// Media Queries
+$media_480: 480px
+$media_768: 768px
+$media_1024: 1024px
+$media_1280: 1280px
+@mixin respond-above($min-size)
+  @media all and (min-width: $min-size)
+    @content
