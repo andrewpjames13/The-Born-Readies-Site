@@ -1,0 +1,7 @@
+<nav>
+  <ul>
+    <% for i, p of @pages: %>
+      <li><a class="ajaxy" href="/<%= p.slug %>"><%- p.title %></a></li>
+    <% end %>
+  </ul>
+</nav>

@@ -1,10 +1,10 @@
 {
-  "name": "big-gulps",
+  "name": "project-name",
   "version": "0.0.0",
   "authors": [
     "GRAVE <donot@enterthegrave.com>"
   ],
-  "description": "Big Gulps, huh? Alright. Well, see you later.",
+  "description": "Project description.",
   "license": "MIT",
   "private": true,
   "ignore": [
@@ -18,9 +18,7 @@
     "jquery": null,
     "modernizr": "2.8.3",
     "underscore": null,
-    "jquery-easing": null,
     "history.js": null,
-    "sass-meyer-reset": null,
-    "greensock": null
+    "sass-meyer-reset": null
   }
 }

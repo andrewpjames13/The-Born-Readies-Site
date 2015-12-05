@@ -1,0 +1,3 @@
+<div class="page-inner">
+  <h2><%- @title %> Page</h2>
+</div>

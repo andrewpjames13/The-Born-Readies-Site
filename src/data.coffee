@@ -2,15 +2,15 @@ data = {
   "pages": {
     "home": {
       "title": "Home",
-      "slug": "home"
+      "slug": ""
     },
     "about": {
       "title": "About",
       "slug": "about"
     },
-    "contact": {
-      "title": "Contact",
-      "slug": "contact"
+    "projects": {
+      "title": "Projects",
+      "slug": "projects"
     }
   }
 }

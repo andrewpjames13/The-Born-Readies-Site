@@ -22,11 +22,7 @@ class Routes
   *----------------------------------------###
   observeSomeSweetEvents: ->
     History.Adapter.bind(window, 'statechange', @onAppStateChange)
-
-    if !BG.$body
-      throw('Error: The global namespaced var in observeSomeSweetEvents() needs to be updated in routes.coffee!')
-    else
-      BG.$body.on('click', '.ajaxy', @onAjaxyLinkClick)
+    DEMO.$body.on('click', '.ajaxy', @onAjaxyLinkClick)
 
   ###
   *------------------------------------------*
