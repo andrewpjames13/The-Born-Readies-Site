@@ -10,6 +10,8 @@ class HomeController
   *----------------------------------------###
   constructor: (init) ->
     @model = init.model
+    @id = @model.getId()
+
     @build()
 
   ###
@@ -19,7 +21,7 @@ class HomeController
   | Build.
   *----------------------------------------###
   build: ->
-    @model.setV($(JST['home-view'](DEMO.data.pages['home'])))
+    @model.setV($(JST["#{@id}-view"](_.findWhere(DEMO.data.pages, {"id": @id}))))
     @model.getE().append(@model.getV())
 
   ###

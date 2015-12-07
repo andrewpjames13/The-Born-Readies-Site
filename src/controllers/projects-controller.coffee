@@ -10,6 +10,8 @@ class ProjectsController
   *----------------------------------------###
   constructor: (init) ->
     @model = init.model
+    @id = @model.getId()
+
     @build()
 
   ###
@@ -19,7 +21,7 @@ class ProjectsController
   | Build.
   *----------------------------------------###
   build: ->
-    @model.setV($(JST['projects-view'](DEMO.data.pages['projects'])))
+    @model.setV($(JST["#{@id}-view"](_.findWhere(DEMO.data.pages, {"id": @id}))))
     @model.getE().append(@model.getV())
 
   ###

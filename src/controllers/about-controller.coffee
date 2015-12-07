@@ -10,6 +10,8 @@ class AboutController
   *----------------------------------------###
   constructor: (init) ->
     @model = init.model
+    @id = @model.getId()
+
     @build()
 
   ###
@@ -19,7 +21,7 @@ class AboutController
   | Build.
   *----------------------------------------###
   build: ->
-    @model.setV($(JST['about-view'](DEMO.data.pages['about'])))
+    @model.setV($(JST["#{@id}-view"](_.findWhere(DEMO.data.pages, {"id": @id}))))
     @model.getE().append(@model.getV())
 
   ###

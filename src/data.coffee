@@ -1,18 +1,21 @@
 data = {
-  "pages": {
-    "home": {
+  "pages": [
+    {
+      "id": "home",
       "title": "Home",
-      "slug": ""
+      "slug": "",
     },
-    "about": {
+    {
+      "id": "about",
       "title": "About",
       "slug": "about"
     },
-    "projects": {
+    {
+      "id": "projects",
       "title": "Projects",
       "slug": "projects"
     }
-  }
+  ]
 }
 
 module.exports = data

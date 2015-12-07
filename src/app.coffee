@@ -7,15 +7,15 @@ HeaderModel = require './models/base-model'
 HeaderController = require './controllers/header-controller'
 
 # Home
-HomeModel = require './models/base-model'
+HomeModel = require './models/home-model'
 HomeController = require './controllers/home-controller'
 
 # About
-AboutModel = require './models/base-model'
+AboutModel = require './models/about-model'
 AboutController = require './controllers/about-controller'
 
 # Projects
-ProjectsModel = require './models/base-model'
+ProjectsModel = require './models/projects-model'
 ProjectsController = require './controllers/projects-controller'
 
 class Application
@@ -61,7 +61,7 @@ class Application
   *----------------------------------------###
   routes: ->
     # Add page routes
-    for i, p of DEMO.data.pages
+    for p in DEMO.data.pages
       DEMO.router.add("/#{p.slug}", "DEMO - #{p.title}")
 
     # Check initial URL
@@ -70,7 +70,7 @@ class Application
       History.replaceState(null, null, '/')
 
     # Subscribe to page routes
-    for i, p of DEMO.data.pages
+    for p in DEMO.data.pages
       DEMO.router.on("/#{p.slug}", @goToPage)
 
   ###
@@ -86,20 +86,20 @@ class Application
       'model': @header_m
     })
 
-    # About
-    @about_m = new AboutModel({'$el': $('#about')})
-    @about_c = new AboutController({
-      'model': @about_m
-    })
-
     # Home
-    @home_m = new HomeModel({'$el': $('#home')})
+    @home_m = new HomeModel({'$el': $('#home'), 'id': 'home'})
     @home_c = new HomeController({
       'model': @home_m
     })
 
+    # About
+    @about_m = new AboutModel({'$el': $('#about'), 'id': 'about'})
+    @about_c = new AboutController({
+      'model': @about_m
+    })
+
     # Projects
-    @projects_m = new ProjectsModel({'$el': $('#projects')})
+    @projects_m = new ProjectsModel({'$el': $('#projects'), 'id': 'projects'})
     @projects_c = new ProjectsController({
       'model': @projects_m
     })
@@ -127,8 +127,7 @@ class Application
   *----------------------------------------###
   goToPage: (route) =>
     route_key = route.key
-    id = if route.url is '/' then 'home' else route.key.split(':')[0]
-    @header_c.setState(id)
+    id = _.findWhere(DEMO.data.pages, {"slug": route_key}).id
 
     if route_key is ''
       page = @home_c
@@ -136,6 +135,8 @@ class Application
       page = @about_c
     else
       page = @projects_c
+
+    @header_c.setState(id)
 
     if @active_c isnt null
       @active_c.transitionOut(=>

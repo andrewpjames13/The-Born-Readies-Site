@@ -30,7 +30,7 @@ class HeaderController
   |
   | Set state.
   *----------------------------------------###
-  setState: (key) ->
+  setState: (state) ->
     @$nav_item.removeClass('active').filter('[data-id="' + state + '"]').addClass('active')
 
 module.exports = HeaderController
