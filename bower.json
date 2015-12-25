@@ -20,6 +20,6 @@
     "underscore": null,
     "history.js": null,
     "sass-meyer-reset": null,
-    "moment": "~2.10.6"
+    "jquery-mousewheel": "~3.1.13"
   }
 }

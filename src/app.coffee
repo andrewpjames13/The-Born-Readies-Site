@@ -36,6 +36,7 @@ class Application
     TBR.utils = require './utils'
     TBR.router = new Routes()
     TBR.active_page_index = 0
+    TBR.total_pages = TBR.data.pages.length
 
     # Class vars
     @$fallback = $('#fallback')
@@ -162,12 +163,15 @@ class Application
     @nav_slider_c.slideTo()
 
     # Update master slider on x-axis.
-    if key_detail
+    if key_detail is "detail"
+      @nav_slider_c.suspend()
       @$master_slider.addClass('move-it-on-over')
       @active_c.activate_detail()
     else
+      @nav_slider_c.activate()
       @$master_slider.removeClass('move-it-on-over')
-      @active_c.suspend_detail()
+      if TBR.router.getPreviousState().key.split(':')[1] is "detail"
+        @active_c.suspend_detail()
 
 module.exports = Application
 
