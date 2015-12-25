@@ -1,10 +1,10 @@
 {
-  "name": "project-name",
+  "name": "the-born-readies-site",
   "version": "0.0.1",
-  "description": "Project description.",
+  "description": "The Born Readies Site",
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:enterthegrave/big-gulps.git"
+    "url": "git@bitbucket.org:andrewjames13/the-born-readies-site.git"
   },
   "browser": {
     "plugin": "./src/javascript/vendor/jquery-plugin.js"

@@ -1,10 +1,10 @@
 {
-  "name": "project-name",
+  "name": "the-born-readies-site",
   "version": "0.0.0",
   "authors": [
-    "GRAVE <donot@enterthegrave.com>"
+    "Me"
   ],
-  "description": "Project description.",
+  "description": "The Born Readies Site",
   "license": "MIT",
   "private": true,
   "ignore": [
@@ -19,6 +19,7 @@
     "modernizr": "2.8.3",
     "underscore": null,
     "history.js": null,
-    "sass-meyer-reset": null
+    "sass-meyer-reset": null,
+    "moment": "~2.10.6"
   }
 }

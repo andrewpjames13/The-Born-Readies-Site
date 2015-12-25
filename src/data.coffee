@@ -2,18 +2,24 @@ data = {
   "pages": [
     {
       "id": "home",
-      "title": "Home",
-      "slug": "",
+      "title": "The Born Readies",
+      "slug": ""
     },
     {
       "id": "about",
       "title": "About",
-      "slug": "about"
+      "slug": "about",
+      "detail": {
+        "title": "About Detail"
+      }
     },
     {
-      "id": "projects",
-      "title": "Projects",
-      "slug": "projects"
+      "id": "merch",
+      "title": "Merch",
+      "slug": "merch",
+      "detail": {
+        "title": "Merch Detail"
+      }
     }
   ]
 }

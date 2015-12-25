@@ -22,7 +22,7 @@ class Routes
   *----------------------------------------###
   observeSomeSweetEvents: ->
     History.Adapter.bind(window, 'statechange', @onAppStateChange)
-    DEMO.$body.on('click', '.ajaxy', @onAjaxyLinkClick)
+    TBR.$body.on('click', '.ajaxy', @onAjaxyLinkClick)
 
   ###
   *------------------------------------------*
@@ -57,7 +57,7 @@ class Routes
   | url:string - url
   |
   | Make a key for storing callbacks.
-  *----------------------------------------### 
+  *----------------------------------------###
   sanitizeKey: (url) ->
     return url.replace(/^\/|\/$/g, '').split('/').join(':').replace(@url_regex, '')
 

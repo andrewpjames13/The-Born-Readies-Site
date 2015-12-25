@@ -1,4 +1,4 @@
-class HeaderController
+class NavSliderController
 
   ###
   *------------------------------------------*
@@ -19,10 +19,6 @@ class HeaderController
   | Build.
   *----------------------------------------###
   build: ->
-    @model.setV($(JST['header-view'](DEMO.data)))
-    @model.getE().append(@model.getV())
-
-    @$nav_item = $('a.ajaxy', @model.getV())
 
   ###
   *------------------------------------------*
@@ -30,7 +26,8 @@ class HeaderController
   |
   | Set state.
   *----------------------------------------###
-  setState: (state) ->
-    @$nav_item.removeClass('active').filter('[data-id="' + state + '"]').addClass('active')
+  slideTo: ->
+    y = -(TBR.active_page_index * 100)
+    @model.getE().css(TBR.utils.transform, TBR.utils.translate(0,"#{y}%"))
 
-module.exports = HeaderController
+module.exports = NavSliderController

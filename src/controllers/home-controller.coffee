@@ -21,20 +21,8 @@ class HomeController
   | Build.
   *----------------------------------------###
   build: ->
-    @model.setV($(JST["#{@id}-view"](_.findWhere(DEMO.data.pages, {"id": @id}))))
+    @model.setV($(JST["#{@id}-view"](_.findWhere(TBR.data.pages, {"id": @id}))))
     @model.getE().append(@model.getV())
-
-  ###
-  *------------------------------------------*
-  | transitionOut:void (-)
-  |
-  | Transition out.
-  *----------------------------------------###
-  transitionOut: (cb) ->
-    @model.getE()
-      .removeClass('active')
-      .off(DEMO.utils.transition_end)
-      .one(DEMO.utils.transition_end, cb)
 
   ###
   *------------------------------------------*
@@ -43,7 +31,6 @@ class HomeController
   | Activate.
   *----------------------------------------###
   activate: ->
-    console.log 'activate home'
     @model.getE().addClass('active')
 
   ###
@@ -53,6 +40,6 @@ class HomeController
   | Activate.
   *----------------------------------------###
   suspend: ->
-    console.log 'suspend home'
+    @model.getE().removeClass('active')
 
 module.exports = HomeController

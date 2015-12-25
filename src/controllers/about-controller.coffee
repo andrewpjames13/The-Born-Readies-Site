@@ -21,20 +21,29 @@ class AboutController
   | Build.
   *----------------------------------------###
   build: ->
-    @model.setV($(JST["#{@id}-view"](_.findWhere(DEMO.data.pages, {"id": @id}))))
+    @model.setV($(JST["#{@id}-view"](_.findWhere(TBR.data.pages, {"id": @id}))))
     @model.getE().append(@model.getV())
+
+    # Class vars
+    @$detail = $('.detail', @model.getV())
 
   ###
   *------------------------------------------*
-  | transitionOut:void (-)
+  | activate_detail:void (-)
   |
-  | Transition out.
+  | Activate detail.
   *----------------------------------------###
-  transitionOut: (cb) ->
-    @model.getE()
-      .removeClass('active')
-      .off(DEMO.utils.transition_end)
-      .one(DEMO.utils.transition_end, cb)
+  activate_detail: ->
+    @$detail.addClass('active')
+
+  ###
+  *------------------------------------------*
+  | suspend_detail:void (-)
+  |
+  | Suspend detail.
+  *----------------------------------------###
+  suspend_detail: ->
+    @$detail.removeClass('active')
 
   ###
   *------------------------------------------*
@@ -43,7 +52,6 @@ class AboutController
   | Activate.
   *----------------------------------------###
   activate: ->
-    console.log 'activate about'
     @model.getE().addClass('active')
 
   ###
@@ -53,6 +61,6 @@ class AboutController
   | Activate.
   *----------------------------------------###
   suspend: ->
-    console.log 'suspend about'
+    @model.getE().removeClass('active')
 
 module.exports = AboutController

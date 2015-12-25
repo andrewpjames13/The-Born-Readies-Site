@@ -57,10 +57,10 @@
       }
     </script>
 
-    <!-- build:css styles/style.css -->
+    <!-- build:css /styles/style.css -->
     <link rel="stylesheet" href="/css/app.css">
     <!-- endbuild -->
-    <!-- build:js1 scripts/vendor_top.min.js -->
+    <!-- build:js1 /scripts/vendor_top.min.js -->
     <script src="/vendor/modernizr/modernizr.js"></script>
     <!-- endbuild -->
   </head>
@@ -68,10 +68,12 @@
 
     <div id="wrapper">
       <header></header>
-      <div id="pages">
-        <div id="home" class="page"></div>
-        <div id="about" class="page"></div>
-        <div id="projects" class="page"></div>
+      <div id="master-slider">
+        <nav id="nav-slider">
+          <div id="home" class="slide"></div>
+          <div id="about" class="slide"></div>
+          <div id="merch" class="slide"></div>
+        </nav>
       </div>
     </div>
 
@@ -91,6 +93,7 @@
     <!-- build:js2 scripts/vendor.min.js -->
     <script src="/vendor/jquery/dist/jquery.js"></script>
     <script src="/vendor/underscore/underscore.js"></script>
+    <script src="/vendor/moment/moment.js"></script>
     <script src="/vendor/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
     <!-- endbuild -->
     <!-- build:js3 scripts/app.min.js -->

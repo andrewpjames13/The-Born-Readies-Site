@@ -1,1 +1,1 @@
-window.DEMO = window.DEMO || {}
+window.TBR = window.TBR || {}

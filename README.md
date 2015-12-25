@@ -1,5 +1,5 @@
-Big Gulps, huh?
-===============
+The Born Readies Site
+=====================
 
 Cool instructions and resources to brighten your day.
 
@@ -51,3 +51,7 @@ Cool instructions and resources to brighten your day.
 - Build minifed and concatenated production-ready application: `gulp dist`
 
 - Clean the tmp folder and start over: `gulp clean`
+
+- Remember htaccess when gulp dist its a hidden file and I may need to add it to the dist folder
+
+- turn on hidden files to see htaccess file `defaults write com.apple.finder AppleShowAllFiles true`

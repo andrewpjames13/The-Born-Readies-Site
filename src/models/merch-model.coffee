@@ -1,7 +1,7 @@
 # Dependencies
 BaseModel = require './base-model'
 
-class ProjectsModel extends BaseModel
+class MerchModel extends BaseModel
 
   ###
   *------------------------------------------*
@@ -37,4 +37,4 @@ class ProjectsModel extends BaseModel
   setId: (id) ->
     @_id = id
 
-module.exports = ProjectsModel
+module.exports = MerchModel

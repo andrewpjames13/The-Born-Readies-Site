@@ -2,9 +2,9 @@
 Env = require './env'
 Routes = require './routes'
 
-# Header
-HeaderModel = require './models/base-model'
-HeaderController = require './controllers/header-controller'
+# NavSlider
+NavSliderModel = require './models/base-model'
+NavSliderController = require './controllers/nav-slider-controller'
 
 # Home
 HomeModel = require './models/home-model'
@@ -14,9 +14,9 @@ HomeController = require './controllers/home-controller'
 AboutModel = require './models/about-model'
 AboutController = require './controllers/about-controller'
 
-# Projects
-ProjectsModel = require './models/projects-model'
-ProjectsController = require './controllers/projects-controller'
+# Merch
+MerchModel = require './models/merch-model'
+MerchController = require './controllers/merch-controller'
 
 class Application
 
@@ -28,17 +28,18 @@ class Application
   *----------------------------------------###
   constructor: ->
     # Globals
-    DEMO.$win = $(window)
-    DEMO.$doc = $(document)
-    DEMO.$html = $('html')
-    DEMO.$body = $('body')
-
-    DEMO.data = require './data'
-    DEMO.utils = require './utils'
-    DEMO.router = new Routes()
+    TBR.$win = $(window)
+    TBR.$doc = $(document)
+    TBR.$html = $('html')
+    TBR.$body = $('body')
+    TBR.data = require './data'
+    TBR.utils = require './utils'
+    TBR.router = new Routes()
+    TBR.active_page_index = 0
 
     # Class vars
     @$fallback = $('#fallback')
+    @$master_slider = $('#master-slider')
     @active_c = null
 
     # Supported?
@@ -47,11 +48,11 @@ class Application
       @routes()
       @build()
 
-    # Clicks or flicks?
-    if DEMO.utils.is_mobile.any() is false
-      DEMO.$html.addClass('cool-clicks')
-    else
-      DEMO.$html.addClass('finger-blaster')
+      # Clicks or flicks?
+      if TBR.utils.is_mobile.any() is false
+        TBR.$html.addClass('cool-clicks')
+      else
+        TBR.$html.addClass('finger-blaster')
 
   ###
   *------------------------------------------*
@@ -61,17 +62,23 @@ class Application
   *----------------------------------------###
   routes: ->
     # Add page routes
-    for p in DEMO.data.pages
-      DEMO.router.add("/#{p.slug}", "DEMO - #{p.title}")
+    for p in TBR.data.pages
+      TBR.router.add("/#{p.slug}", "TBR - #{p.title}")
+      if p.detail
+        TBR.router.add("/#{p.slug}/detail", "TBR - #{p.title}")
 
     # Check initial URL
-    state = DEMO.router.getState()
-    unless DEMO.router.routes[state.key]?
+    # If the slug in the url doesn't exist,
+    # E.T. phone home!
+    state = TBR.router.getState()
+    unless TBR.router.routes[state.key]?
       History.replaceState(null, null, '/')
 
     # Subscribe to page routes
-    for p in DEMO.data.pages
-      DEMO.router.on("/#{p.slug}", @goToPage)
+    for p in TBR.data.pages
+      TBR.router.on("/#{p.slug}", @goToPage)
+      if p.detail
+        TBR.router.on("/#{p.slug}/detail", @goToPage)
 
   ###
   *------------------------------------------*
@@ -80,10 +87,10 @@ class Application
   | Build.
   *----------------------------------------###
   build: ->
-    # Header
-    @header_m = new HeaderModel({'$el': $('header')})
-    @header_c = new HeaderController({
-      'model': @header_m
+    # NavSlider
+    @nav_slider_m = new NavSliderModel({'$el': $('#nav-slider')})
+    @nav_slider_c = new NavSliderController({
+      'model': @nav_slider_m
     })
 
     # Home
@@ -98,10 +105,10 @@ class Application
       'model': @about_m
     })
 
-    # Projects
-    @projects_m = new ProjectsModel({'$el': $('#projects'), 'id': 'projects'})
-    @projects_c = new ProjectsController({
-      'model': @projects_m
+    # Merch
+    @merch_m = new MerchModel({'$el': $('#merch'), 'id': 'merch'})
+    @merch_c = new MerchController({
+      'model': @merch_m
     })
 
     # Observe
@@ -115,7 +122,7 @@ class Application
   *----------------------------------------###
   observeSomeSweetEvents: ->
     # Trigger the initial route
-    DEMO.router.onAppStateChange()
+    TBR.router.onAppStateChange()
 
   ###
   *------------------------------------------*
@@ -126,40 +133,44 @@ class Application
   | Go to page.
   *----------------------------------------###
   goToPage: (route) =>
-    route_key = route.key
-    id = _.findWhere(DEMO.data.pages, {"slug": route_key}).id
+    key_group = route.key.split(':')[0]
+    key_detail = route.key.split(':')[1]
+    TBR.active_page_index = _.findIndex(TBR.data.pages, {"slug": key_group})
 
-    if route_key is ''
+    # What page are we going to next?
+    if key_group is ''
       page = @home_c
-    else if route_key is 'about'
+    else if key_group is 'about'
       page = @about_c
-    else
-      page = @projects_c
+    else if key_group is 'merch'
+      page = @merch_c
 
-    @header_c.setState(id)
-
-    if @active_c isnt null
-      @active_c.transitionOut(=>
-        @suspend()
-        @active_c = page
-        @active_c.activate()
-      )
+    # Suspend and activate old/current pages.
+    if @active_c is null
+      # First timer, so just set current page.
+      @active_c = page
+      @active_c.activate()
     else
+      # Suspend the current page.
+      @active_c.suspend()
+      # Set our new page from our if statement above
+      # and activate this page.
       @active_c = page
       @active_c.activate()
 
-  ###
-  *------------------------------------------*
-  | suspend:void (-)
-  |
-  | Suspend all.
-  *----------------------------------------###
-  suspend: ->
-    if @active_c isnt null
-      @active_c.suspend()
+    # Update nav slider on y-axis.
+    @nav_slider_c.slideTo()
+
+    # Update master slider on x-axis.
+    if key_detail
+      @$master_slider.addClass('move-it-on-over')
+      @active_c.activate_detail()
+    else
+      @$master_slider.removeClass('move-it-on-over')
+      @active_c.suspend_detail()
 
 module.exports = Application
 
 $ ->
   # instance
-  DEMO.instance = new Application()
+  TBR.instance = new Application()
