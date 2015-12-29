@@ -2,6 +2,10 @@
 Env = require './env'
 Routes = require './routes'
 
+# SoundBarn
+SoundBarnModel = require './models/base-model'
+SoundBarnController = require './controllers/sound-barn-controller'
+
 # NavSlider
 NavSliderModel = require './models/base-model'
 NavSliderController = require './controllers/nav-slider-controller'
@@ -88,6 +92,12 @@ class Application
   | Build.
   *----------------------------------------###
   build: ->
+    # SoundBarn Music Player
+    @sound_barn_m = new SoundBarnModel({'$el': $('#sound-barn')})
+    @sound_barn_c = new SoundBarnController({
+      'model': @sound_barn_m
+    })
+
     # NavSlider
     @nav_slider_m = new NavSliderModel({'$el': $('#nav-slider')})
     @nav_slider_c = new NavSliderController({
