@@ -6,6 +6,10 @@ Routes = require './routes'
 SoundBarnModel = require './models/base-model'
 SoundBarnController = require './controllers/sound-barn-controller'
 
+# MainNav
+MainNavModel = require './models/base-model'
+MainNavController = require './controllers/main-nav-controller'
+
 # NavSlider
 NavSliderModel = require './models/base-model'
 NavSliderController = require './controllers/nav-slider-controller'
@@ -96,6 +100,12 @@ class Application
     @sound_barn_m = new SoundBarnModel({'$el': $('#sound-barn')})
     @sound_barn_c = new SoundBarnController({
       'model': @sound_barn_m
+    })
+
+    # MainNav
+    @main_nav_m = new MainNavModel({'$el': $('#main-nav')})
+    @main_nav_c = new MainNavController({
+      'model': @main_nav_m
     })
 
     # NavSlider
