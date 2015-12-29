@@ -47,7 +47,7 @@ class MainNavController
       @$navContainer.removeClass('closed').addClass('open')
     else
       @navOpen = false
-      @$navContainer.animate { opacity: '0' }, 300, ->
+      @$navContainer.animate { opacity: '0' }, 400, ->
         $('.nav-container').removeClass('open').addClass('closed')
 
 module.exports = MainNavController
