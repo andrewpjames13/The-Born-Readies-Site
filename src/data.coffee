@@ -21,7 +21,8 @@ data = {
         "title": "Merch Detail"
       }
     }
-  ]
+  ],
+  "sound_barn":["You Really Turn Me On", "Wildside", "Get After It", "Fallen"]
 }
 
 module.exports = data
