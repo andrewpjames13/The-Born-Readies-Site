@@ -24,8 +24,8 @@ class MainNavController
 
     #Class vars
     @navOpen = false
-    @$navContainer = $('.nav-container')
-    @$menuIcon = $('#menu-icon', @model.getV())
+    @$navContainer = $('.nav-container', @model.getV())
+    @$menuIcon = $('#nav-button')
 
     # Observe
     @observeSomeSweetEvents()
@@ -43,11 +43,11 @@ class MainNavController
   toggleNav: =>
     if @navOpen is false
       @navOpen = true
-      # @$navContainer.animate { opacity: '.95' }, 200, ->
+      @$navContainer.animate { opacity: '.95' }, 200, ->
       @$navContainer.removeClass('closed').addClass('open')
     else
       @navOpen = false
-      # @$navContainer.animate { opacity: '0' }, 200, ->
-      @$navContainer.removeClass('open').addClass('closed')
+      @$navContainer.animate { opacity: '0' }, 300, ->
+        $('.nav-container').removeClass('open').addClass('closed')
 
 module.exports = MainNavController
