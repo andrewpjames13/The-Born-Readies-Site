@@ -1,5 +1,7 @@
 <div class="slide-inner">
   <div class="hero">
-    <h2><%- @title %></h2>
+    <div class="centered-content">
+      <img src="/images/the-born-readies-logo.svg" alt="" />
+    </div>
   </div>
 </div>
