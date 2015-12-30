@@ -31,20 +31,46 @@
     background-color: $blood_lust
     overflow: hidden
 
-#about .slide-inner
-    background-image: url('/images/the-born-readies-about.jpg')
-#merch .slide-inner
-  background-image: url('/images/the-born-readies-merch.jpg')
-
-#home, #about, #merch, #contact
-  background-color: $white
-  .centered-content
-    width: 30vw
-    height: 30vw
+  svg#TBR
+    width: 17%
+    padding-left: 23%
+  svg#lightening
+    width: 6%
+    padding-left: 23%
 
 .centered-content
   position: absolute
+  color: $gold
+  width: 25vw
+  height: auto
   top: 50%
   left: 50%
   transform: translate(-50%,-50%)
+  text-align: center
+  cursor: pointer
+  h1
+    font-size: 10vw
+  h1:nth-child(2)
+    position: absolute
+    font-family: 'Seventies Shade Solo'
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-60%)
+    opacity: 0
+    transition: opacity 0.25s ease-in-out
+    &:hover
+      opacity: 1
 
+#home, #about, #merch, #contact
+  background-color: $white
+
+#home .centered-content
+  width: 30vw
+
+#about .slide-inner
+  background-image: url('/images/the-born-readies-about.jpg')
+
+#merch .slide-inner
+  background-image: url('/images/the-born-readies-merch.jpg')
+  h1
+    letter-spacing: -3px

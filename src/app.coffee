@@ -145,6 +145,16 @@ class Application
     # Trigger the initial route
     TBR.router.onAppStateChange()
 
+  do ->
+    path = '//easy.myfonts.net/v2/js?sid=277714(font-family=Seventies)&key=Cnege7R5aL'
+    protocol = if 'https:' == document.location.protocol then 'https:' else 'http:'
+    trial = document.createElement('script')
+    trial.type = 'text/javascript'
+    trial.async = true
+    trial.src = protocol + path
+    head = document.getElementsByTagName('head')[0]
+    head.appendChild trial
+    return
   ###
   *------------------------------------------*
   | goToPage:void (=)

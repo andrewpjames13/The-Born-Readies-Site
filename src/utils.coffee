@@ -7,7 +7,7 @@ Utils = {
   | Get browser specific transform.
   *----------------------------------------###
   'transform':
-    Modernizr.prefixed('transform').replace(/([A-Z])/g, (str,m1) => 
+    Modernizr.prefixed('transform').replace(/([A-Z])/g, (str,m1) =>
       return '-' + m1.toLowerCase()
     ).replace(/^ms-/,'-ms-')
   ,
@@ -30,7 +30,7 @@ Utils = {
   |
   | Get browser specific transition end.
   *----------------------------------------###
-  'transition_end': 
+  'transition_end':
     (=>
       transEndEventNames = {
         'WebkitTransition' : 'webkitTransitionEnd',
@@ -69,10 +69,10 @@ Utils = {
       ,
       'any': ->
         return (
-          (/Android/i).test(navigator.userAgent) or 
-          (/BlackBerry/i).test(navigator.userAgent) or 
-          (/iPhone|iPad|iPod/i).test(navigator.userAgent) or 
-          (/Opera Mini/i).test(navigator.userAgent) or 
+          (/Android/i).test(navigator.userAgent) or
+          (/BlackBerry/i).test(navigator.userAgent) or
+          (/iPhone|iPad|iPod/i).test(navigator.userAgent) or
+          (/Opera Mini/i).test(navigator.userAgent) or
           (/IEMobile/i).test(navigator.userAgent)
         )
     }
