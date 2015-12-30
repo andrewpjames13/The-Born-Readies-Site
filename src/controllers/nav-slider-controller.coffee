@@ -52,6 +52,8 @@ class NavSliderController
       History.pushState(null, null, "/#{href}")
       @$bottomBorder.animate { height: '1.5em' }, 800
       @$menuControls.animate { bottom: '0' }, 800
+      $('.footer-container').removeClass('open').addClass('closed')
+
 
   nextSlide: =>
     if TBR.active_page_index < TBR.total_pages - 1
@@ -61,6 +63,8 @@ class NavSliderController
       if TBR.total_pages - 1 is TBR.active_page_index
         @$bottomBorder.animate { height: '3em' }, 800
         @$menuControls.animate { bottom: '1.9em' }, 800
+        $('.footer-container').removeClass('closed').addClass('open')
+
 
   ###
   *------------------------------------------*

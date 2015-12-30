@@ -10,6 +10,10 @@ SoundBarnController = require './controllers/sound-barn-controller'
 MainNavModel = require './models/base-model'
 MainNavController = require './controllers/main-nav-controller'
 
+# Footer
+FooterModel = require './models/base-model'
+FooterController = require './controllers/footer-controller'
+
 # NavSlider
 NavSliderModel = require './models/base-model'
 NavSliderController = require './controllers/nav-slider-controller'
@@ -66,6 +70,7 @@ class Application
     if TBR.total_pages - 1 is TBR.active_page_index
       $('.bottom-border').animate { height: '3em' }, 800
       $('#music-menu, .menu-controls').animate { bottom: '1.9em' }, 800
+      $('.footer-container').removeClass('closed').addClass('open')
   ###
   *------------------------------------------*
   | routes:void (-)
@@ -115,6 +120,12 @@ class Application
     @nav_slider_m = new NavSliderModel({'$el': $('#nav-slider')})
     @nav_slider_c = new NavSliderController({
       'model': @nav_slider_m
+    })
+
+    # Footer
+    @footer_m = new FooterModel({'$el': $('#footer')})
+    @footer_c = new FooterController({
+      'model': @footer_m
     })
 
     # Home

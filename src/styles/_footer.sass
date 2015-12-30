@@ -1,0 +1,33 @@
+.footer-container
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  width: 100%
+  height: 3em
+  padding: 0 1.5em
+  transition: .8s ease-in-out
+  &.closed
+    transform: translateY(35px)
+    opacity: 0
+  &.open
+    transform: translateY(0px)
+    opacity: 1
+  svg
+    position: relative
+    float: left
+    &#TBR
+      width: 3.3em
+      margin-top: 14px
+    &#lightening
+      width: .5em
+      margin-top: 15px
+      margin-left: 8px
+  .cant-steal-this
+    margin-top: 18px
+    margin-right: 4em
+    float: right
+    position: relative
+    font-family: $hell_vetica
+    font-size: 12px
+    color: $gold
