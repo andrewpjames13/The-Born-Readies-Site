@@ -63,6 +63,9 @@ class Application
       else
         TBR.$html.addClass('finger-blaster')
 
+    if TBR.total_pages - 1 is TBR.active_page_index
+      $('.bottom-border').animate { height: '3em' }, 800
+      $('#music-menu, .menu-controls').animate { bottom: '1.9em' }, 800
   ###
   *------------------------------------------*
   | routes:void (-)
