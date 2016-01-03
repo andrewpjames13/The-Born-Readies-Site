@@ -34,3 +34,13 @@
           color: $gold
           text-decoration: none
           font-size: 10vw
+        a:nth-child(even)
+          position: absolute
+          font-family: 'Seventies Shade Solo'
+          left: 50%
+          transform: translateX(-50%)
+          opacity: 0
+          transition: opacity 0.25s ease-in-out
+          &:hover
+            cursor: pointer
+            opacity: 1

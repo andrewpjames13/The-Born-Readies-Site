@@ -2,10 +2,10 @@
   <div class="nav-container">
     <div class="centered-content">
       <ul>
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">ABOUT</a></li>
-        <li><a href="#">MERCH</a></li>
-        <li><a href="#">CONTACT</a></li>
+        <li><a href="#">Home</a><a>Home</a></li>
+        <li><a href="#">About</a><a>About</a></li>
+        <li><a href="#">Merch</a><a>Merch</a></li>
+        <li><a href="#">Contact</a><a>Contact</a></li>
       </ul>
     </div>
   </div>
