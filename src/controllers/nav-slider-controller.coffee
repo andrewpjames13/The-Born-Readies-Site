@@ -22,7 +22,8 @@ class NavSliderController
     # Class vars
     @threshold_hit = false
     @$bottomBorder = $('.bottom-border')
-    @$menuControls = $('#music-menu, .menu-controls')
+    @$musicMenu = $('#music-menu')
+    @$musicList = $('.menu-controls')
   ###
   *------------------------------------------*
   | onMousewheel:void (=)
@@ -51,7 +52,8 @@ class NavSliderController
       href = TBR.data.pages[TBR.active_page_index - 1].slug
       History.pushState(null, null, "/#{href}")
       @$bottomBorder.animate { height: '1.5em' }, 800
-      @$menuControls.animate { bottom: '0' }, 800
+      @$musicMenu.animate { bottom: '0' }, 800
+      @$musicList.animate { bottom: '0' }, 800
       $('.footer-container').removeClass('open').addClass('closed')
 
 
@@ -62,7 +64,8 @@ class NavSliderController
       History.pushState(null, null, "/#{href}")
       if TBR.total_pages - 1 is TBR.active_page_index
         @$bottomBorder.animate { height: '3em' }, 800
-        @$menuControls.animate { bottom: '1.9em' }, 800
+        @$musicMenu.animate { bottom: '1.5em' }, 800
+        @$musicList.animate { bottom: '.5' }, 800
         $('.footer-container').removeClass('closed').addClass('open')
 
 
