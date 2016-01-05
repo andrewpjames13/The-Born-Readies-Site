@@ -1,6 +1,11 @@
 .top-border, .right-border, .left-border, .bottom-border
   background-color: $white
   position: absolute
+  transition: all $speed_metal $evil_ease
+  &.black
+    background-color: $black
+    .paper-bg
+      opacity: 0
 
 .top-border, .bottom-border
   width: 100%
@@ -22,4 +27,7 @@
   background-image: url("/images/ricepaper-texture.png")
   opacity: .15
 
-
+.col-1-2
+  width: 50%
+  height: auto
+  float: left

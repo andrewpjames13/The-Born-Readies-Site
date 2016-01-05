@@ -2,7 +2,7 @@ data = {
   "pages": [
     {
       "id": "home",
-      "title": "The Born Readies",
+      "title": "Home",
       "slug": ""
     },
     {
@@ -10,7 +10,16 @@ data = {
       "title": "About",
       "slug": "about",
       "detail": {
-        "title": "About Detail"
+        "title": "About Detail",
+        "slug": "about/detail"
+        "sections": [
+          {
+            "title": "Who We are"
+          },
+          {
+            "title": "Photos"
+          }
+        ]
       }
     },
     {

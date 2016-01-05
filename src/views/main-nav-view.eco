@@ -1,12 +1,11 @@
 <div id="nav">
   <div class="nav-container">
     <div class="centered-content">
-      <ul>
-        <li><a>Home</a><a href="#">Home</a></li>
-        <li><a>About</a><a href="#">About</a></li>
-        <li><a>Merch</a><a href="#">Merch</a></li>
-        <li><a>Contact</a><a href="#">Contact</a></li>
-      </ul>
+    <ul>
+      <% for i, p of TBR.data.pages: %>
+        <li><a><%- p.title %></a><a data-id="<%= p.id %>" href="/<%= p.slug %>"><%- p.title %></a></li>
+      <% end %>
+    </ul>
     </div>
   </div>
 </div>

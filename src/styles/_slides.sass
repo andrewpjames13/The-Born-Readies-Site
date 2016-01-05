@@ -28,8 +28,48 @@
     left: 100%
     width: 100%
     height: 100%
-    background-color: $blood_lust
+    background-color: $black
     overflow: hidden
+    section
+      width: 100%
+      height: 100%
+      font-family: $hell-vetica
+      .who-we-are, .press-kit
+        height: 100%
+        position: relative
+        .content, .press-btn
+          position: absolute
+          width: 75%
+          height: 50%
+          top: 50%
+          left: 50%
+          transform: translate(-50%, -50%)
+          ul
+            padding-left: 30px
+            margin: 20px 0 40px 0
+            color: $gold
+            font-size: 14px
+            line-height: 20px
+            svg
+              width: .4em
+              height: auto
+              margin-left: 10px
+        .press-btn
+          border: 2px solid $gold
+        .social-media
+          width: 100%
+          position: absolute
+          bottom: 0
+          padding-left: 30px
+          opacity: .8
+          svg
+            width: 40px
+            height: auto
+            #facebook, #instagram
+              transition: fill $speed $evil_ease
+            &:hover
+              #facebook, #instagram
+                fill: $white
 
   svg#TBR
     width: 17%

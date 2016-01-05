@@ -21,9 +21,9 @@ class NavSliderController
   build: ->
     # Class vars
     @threshold_hit = false
-    @$bottomBorder = $('.bottom-border')
-    @$musicMenu = $('#music-menu')
-    @$musicList = $('.menu-controls')
+    @$bottomBorder = $('.bottom-border', @model.getV())
+    @$musicMenu = $('#music-menu', @model.getV())
+    @$musicList = $('.menu-controls', @model.getV())
   ###
   *------------------------------------------*
   | onMousewheel:void (=)
@@ -48,7 +48,7 @@ class NavSliderController
 
   previousSlide: =>
     if TBR.active_page_index > 0
-      console.log 'prev!', TBR.active_page_index - 1
+      # console.log 'prev!', TBR.active_page_index - 1
       href = TBR.data.pages[TBR.active_page_index - 1].slug
       History.pushState(null, null, "/#{href}")
       @$bottomBorder.animate { height: '1.5em' }, 800
@@ -59,7 +59,7 @@ class NavSliderController
 
   nextSlide: =>
     if TBR.active_page_index < TBR.total_pages - 1
-      console.log 'next!', TBR.active_page_index + 1
+      # console.log 'next!', TBR.active_page_index + 1
       href = TBR.data.pages[TBR.active_page_index + 1].slug
       History.pushState(null, null, "/#{href}")
       if TBR.total_pages - 1 is TBR.active_page_index

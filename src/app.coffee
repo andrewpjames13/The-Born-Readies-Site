@@ -53,6 +53,7 @@ class Application
     # Class vars
     @$fallback = $('#fallback')
     @$master_slider = $('#master-slider')
+    @$borders = $('.top-border, .right-border, .bottom-border, .left-border')
     @active_c = null
 
     # Supported?
@@ -210,10 +211,12 @@ class Application
     if key_detail is "detail"
       @nav_slider_c.suspend()
       @$master_slider.addClass('move-it-on-over')
+      @$borders.addClass('black')
       @active_c.activate_detail()
     else
       @nav_slider_c.activate()
       @$master_slider.removeClass('move-it-on-over')
+      @$borders.removeClass('black')
       if TBR.router.getPreviousState().key.split(':')[1] is "detail"
         @active_c.suspend_detail()
 

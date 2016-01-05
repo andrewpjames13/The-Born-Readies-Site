@@ -26,7 +26,17 @@ class AboutController
 
     # Class vars
     @$detail = $('.detail', @model.getV())
+    @$lightening = $('#lightening', @model.getV())
 
+    # Observe
+    @observeSomeSweetEvents()
+
+  observeSomeSweetEvents: ->
+    @$lightening.on("click", @moveItOnOver)
+
+  moveItOnOver: =>
+    href = TBR.data.pages[TBR.active_page_index].detail.slug
+    History.pushState(null, null, "/#{href}")
   ###
   *------------------------------------------*
   | activate_detail:void (-)
