@@ -29,7 +29,7 @@
       </svg>
     </div>
   </div>
-  <div class="detail">
+  <div class="detail fade-out">
     <section>
       <div class="col-1-2 who-we-are">
         <div class="content">
@@ -78,6 +78,8 @@
       <div class="col-1-2 press-kit">
         <div class="press-btn"></div>
       </div>
+    </section>
+    <section>
     </section>
   </div>
 </div>

@@ -211,11 +211,15 @@ class Application
     if key_detail is "detail"
       @nav_slider_c.suspend()
       @$master_slider.addClass('move-it-on-over')
+      $('.detail').removeClass('fade-out')
+      $('.hero').addClass('fade-out')
       @$borders.addClass('black')
       @active_c.activate_detail()
     else
       @nav_slider_c.activate()
       @$master_slider.removeClass('move-it-on-over')
+      $('.detail').addClass('fade-out')
+      $('.hero').removeClass('fade-out')
       @$borders.removeClass('black')
       if TBR.router.getPreviousState().key.split(':')[1] is "detail"
         @active_c.suspend_detail()

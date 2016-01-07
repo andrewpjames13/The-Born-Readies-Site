@@ -35,6 +35,7 @@ class NavSliderController
 
     if @threshold_hit is false
       d = (e.deltaY * e.deltaFactor)
+      console.log d
       if Math.abs(d) >= 20
         @threshold_hit = true
         if d > 0
