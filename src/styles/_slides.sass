@@ -36,53 +36,12 @@
     background-color: $black
     overflow: hidden
     transition: all $speed $evil_ease
-    &.move-it-on-up
-      section
-        transform: translate3d(0,-100%,0)
     section
       width: 100%
       height: 100%
       font-family: $hell-vetica
       transition: all $speed $evil_ease
-      .who-we-are, .press-kit
-        height: 100%
-        position: relative
-        .content, .press-btn
-          position: absolute
-          width: 75%
-          height: 50%
-          top: 50%
-          left: 50%
-          transform: translate(-50%, -50%)
-          ul
-            padding-left: 30px
-            margin: 10px 0 40px 0
-            color: $gold
-            font-size: 14px
-            line-height: 20px
-            svg
-              width: .4em
-              height: auto
-              margin-left: 10px
-        .press-btn
-          border: 2px solid $gold
-        .social-media
-          width: 100%
-          position: absolute
-          bottom: 0
-          padding-left: 30px
-          svg
-            width: 40px
-            height: auto
-            #facebook, #instagram
-              transition: fill $speed $evil_ease
-            #facebook:hover
-              fill: $white
-            #instagram:hover
-              fill: $white
 
-    section:nth-child(3)
-      background-color: blue
   svg#TBR
     width: 17%
     padding-left: 23%
@@ -120,7 +79,59 @@
 
 #about .slide-inner
   background-image: url('/images/the-born-readies-about.jpg')
+  section
+    .who-we-are, .press-kit
+      height: 100%
+      position: relative
+      .content, .press-btn
+        position: absolute
+        width: 75%
+        height: 50%
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        ul
+          padding-left: 30px
+          margin: 10px 0 40px 0
+          color: $gold
+          font-size: 14px
+          line-height: 20px
+          svg
+            width: .4em
+            height: auto
+            margin-left: 10px
+      .press-btn
+        border: 2px solid $gold
+      .social-media
+        width: 100%
+        position: absolute
+        bottom: 0
+        padding-left: 30px
+        svg
+          width: 40px
+          height: auto
+          #facebook, #instagram
+            transition: fill $speed $evil_ease
+          #facebook:hover
+            fill: $white
+          #instagram:hover
+            fill: $white
+  section.photos
+    .content
+      position: absolute
+      width: 95%
+      height: 90%
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+    .col-1-3
+      background-color: $gold
+      margin: 1.11% 1.11% 0 0
+      width: 32.22%
+      height: 40%
 
+  section:nth-child(3)
+    background-color: blue
 #merch .slide-inner
   background-image: url('/images/the-born-readies-merch.jpg')
   h1
