@@ -3,7 +3,10 @@ data = {
     {
       "id": "home",
       "title": "Home",
-      "slug": ""
+      "slug": "",
+      "detail":{
+        "sections":[]
+      }
     },
     {
       "id": "about",
@@ -18,6 +21,9 @@ data = {
           },
           {
             "title": "Photos"
+          },
+          {
+            "title": "Photos more"
           }
         ]
       }
@@ -27,7 +33,9 @@ data = {
       "title": "Merch",
       "slug": "merch",
       "detail": {
-        "title": "Merch Detail"
+        "title": "Merch Detail",
+        "slug": "merch/detail",
+        "sections": []
       }
     }
   ],

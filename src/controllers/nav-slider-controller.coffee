@@ -35,7 +35,6 @@ class NavSliderController
 
     if @threshold_hit is false
       d = (e.deltaY * e.deltaFactor)
-      console.log d
       if Math.abs(d) >= 20
         @threshold_hit = true
         if d > 0
@@ -49,7 +48,6 @@ class NavSliderController
 
   previousSlide: =>
     if TBR.active_page_index > 0
-      # console.log 'prev!', TBR.active_page_index - 1
       href = TBR.data.pages[TBR.active_page_index - 1].slug
       History.pushState(null, null, "/#{href}")
       @$bottomBorder.animate { height: '1.5em' }, 800
@@ -60,7 +58,6 @@ class NavSliderController
 
   nextSlide: =>
     if TBR.active_page_index < TBR.total_pages - 1
-      # console.log 'next!', TBR.active_page_index + 1
       href = TBR.data.pages[TBR.active_page_index + 1].slug
       History.pushState(null, null, "/#{href}")
       if TBR.total_pages - 1 is TBR.active_page_index

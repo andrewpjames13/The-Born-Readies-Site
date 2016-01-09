@@ -27,26 +27,25 @@ class AboutController
     # Class vars
     @$detail = $('.detail', @model.getV())
     @$lightening = $('#lightening', @model.getV())
-    @threshold_hit = false
-    @active_section_index = 0
-    @total_sections = TBR.data.pages[1].detail.sections.length
+    @aboutThreshold_hit = false
+    @sectionCount = 0
+    @sectionTitle = ""
+    @activeSectionIndex = 0
+    @totalSections = 0
     @$bottomBorder = $('.bottom-border')
     @$musicMenu = $('#music-menu')
     @$musicList = $('.menu-controls')
-
     # Observe
     @observeSomeSweetEvents()
 
   observeSomeSweetEvents: ->
     @$lightening.on("click", @moveItOnOver)
-    $('.press-btn').on("click", @moveItOnUp)
 
   moveItOnOver: =>
+    $('.detail > section').css(TBR.utils.transform, TBR.utils.translate(0, "0%"))
     href = TBR.data.pages[TBR.active_page_index].detail.slug
     History.pushState(null, null, "/#{href}")
 
-  moveItOnUp: =>
-    $('.detail').addClass('move-it-on-up')
   ###
   *------------------------------------------*
   | onMousewheel:void (=)
@@ -55,36 +54,37 @@ class AboutController
   *----------------------------------------###
   onMousewheel: (e) =>
     e.preventDefault()
-    if @threshold_hit is false
+
+    @sectionTitle = TBR.data.pages[TBR.active_page_index].detail.sections[@sectionCount].title
+    @activeSectionIndex = _.findIndex(TBR.data.pages[TBR.active_page_index].detail.sections, {"title": @sectionTitle})
+    @totalSections = TBR.data.pages[TBR.active_page_index].detail.sections.length
+
+    if @aboutThreshold_hit is false
       d = (e.deltaY * e.deltaFactor)
       if Math.abs(d) >= 20
+        @aboutThreshold_hit = true
         if d > 0
           @previousSection()
         else if d < 0
           @nextSection()
         setTimeout =>
-          @threshold_hit = false
+          @aboutThreshold_hit = false
         , 666
 
   previousSection: =>
-    if @active_section_index > 0
-      # @slideTo()
-      $('.detail > section').css(TBR.utils.transform, TBR.utils.translate(0, "0%"))
-      @active_section_index -= 1
+    if @activeSectionIndex > 0
+      @sectionCount -= 1
+      @slideSection()
       @$bottomBorder.animate { height: '1.5em' }, 800
       @$musicMenu.animate { bottom: '0' }, 800
       @$musicList.animate { bottom: '0' }, 800
       $('.footer-container').removeClass('open').addClass('closed')
-  #
+
   nextSection: =>
-    if @active_section_index < @total_sections - 1
-      # @slideTo()
-      yMover = -(@active_section_index * 100)
-      $('.detail > section').css(TBR.utils.transform, TBR.utils.translate(0, "#{yMover}%"))
-      @active_section_index += 1
-      console.log @total_sections
-      console.log @active_section_index
-      if @total_sections - 1 is @active_section_index
+    if @activeSectionIndex < @totalSections - 1
+      @sectionCount += 1
+      @slideSection()
+      if @totalSections - 1 is @activeSectionIndex
         @$bottomBorder.animate { height: '3em' }, 800
         @$musicMenu.animate { bottom: '1.5em' }, 800
         @$musicList.animate { bottom: '.5' }, 800
@@ -96,11 +96,11 @@ class AboutController
   |
   | Set state.
   *----------------------------------------###
-  # slideTo: ->
-  #   y = -(@active_section_index * 100)
-  #   $('.detail > section').css(TBR.utils.transform, TBR.utils.translate(0,"#{y}%"))
-  #   console.log @active_section_index
-  #   console.log y
+  slideSection: ->
+    yMover = -(@sectionCount * 100)
+    $('.detail > section').css(TBR.utils.transform, TBR.utils.translate(0, "#{yMover}%"))
+    @sectionTitle = TBR.data.pages[TBR.active_page_index].detail.sections[@sectionCount].title
+    @activeSectionIndex = _.findIndex(TBR.data.pages[TBR.active_page_index].detail.sections, {"title": @sectionTitle})
 
   ###
   *------------------------------------------*
