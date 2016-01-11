@@ -97,12 +97,42 @@
           color: $gold
           font-size: 14px
           line-height: 20px
+          width: 450px
           svg
             width: .4em
             height: auto
             margin-left: 10px
       .press-btn
-        border: 2px solid $gold
+        border: 4px solid rgba(162,144,96,0.15)
+        transition: all $speed $evil_ease
+        &:hover
+          border: 4px solid rgba(162,144,96,0.2)
+          .content
+            filter: grayscale(0)
+        .content
+          opacity: .15
+          width: 100%
+          height: 100%
+          background-image: url('/images/press-kit-img.jpg')
+          background-position: center
+          background-size: cover
+          background-repeat: no-repeat
+          filter: grayscale(1)
+          transition: all $speed $evil_ease
+        .text
+          position: absolute
+          color: $gold
+          top: 43%
+          left: 50%
+          transform: rotate(-15deg) translate(-50%, -43%)
+          p
+            font-family: 'Seventies Printed'
+            font-size: 5vw
+          p:nth-child(2)
+            font-family: $hell-vetica
+            font-size: .6vw
+            margin: 1% 0 0 7%
+            transform: rotate(2deg) translate(25%, 164%)
       .social-media
         width: 100%
         position: absolute
