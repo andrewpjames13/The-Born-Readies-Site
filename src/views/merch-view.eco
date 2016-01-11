@@ -1,7 +1,6 @@
 <div class="slide-inner">
   <div class="hero">
     <div class="centered-content">
-    <div class="centered-content">
       <svg id="TBR" viewBox="0 0 54.2 23">
         <g>
           <path fill="#A29060" d="M15.9,7.5h-4.3v13.5H5.5V7.5H1.3V1.5h14.6V7.5z"/>
@@ -30,6 +29,7 @@
       </svg>
     </div>
   </div>
-    </div>
+  <div class="detail">
+    <section></section>
   </div>
 </div>

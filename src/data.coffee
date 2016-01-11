@@ -34,8 +34,12 @@ data = {
       "slug": "merch",
       "detail": {
         "title": "Merch Detail",
-        "slug": "merch/detail",
-        "sections": []
+        "slug": "merch/detail"
+        "sections": [
+          {
+            "title": "Self Titled EP"
+          }
+        ]
       }
     }
   ],
