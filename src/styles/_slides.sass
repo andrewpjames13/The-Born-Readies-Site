@@ -37,6 +37,7 @@
     overflow: hidden
     transition: all $speed $evil_ease
     section
+      position: relative
       width: 100%
       height: 100%
       font-family: $hell-vetica
@@ -44,7 +45,7 @@
 
   svg#TBR
     width: 17%
-    padding-left: 23%
+    // padding-left: 23%
   svg#lightening
     width: 5%
     padding-left: 23%
@@ -60,16 +61,17 @@
   text-align: center
   h1
     font-size: 10vw
-  h1:nth-child(2)
-    position: absolute
-    font-family: 'Seventies Shade Solo'
-    top: 50%
-    left: 50%
-    transform: translate(-50%,-57%)
-    opacity: 0
-    transition: opacity 0.25s ease-in-out
+  button
+    width: 200px
+    height: 50px
+    border: 2px solid $gold
+    margin: 30px auto
+    color: $gold
+    cursor: pointer
+    transition: all 0.25s ease-in-out
     &:hover
-      opacity: 1
+      background-color: $gold
+      color: $black
 
 #home, #about, #merch, #contact
   background-color: $white
@@ -79,8 +81,9 @@
 
 #about .slide-inner
   background-image: url('/images/the-born-readies-about.jpg')
+  h1
+    padding-right: 41px
   section
-    position: relative
     .who-we-are, .press-kit
       height: 100%
       position: relative
@@ -165,5 +168,22 @@
     background-color: blue
 #merch .slide-inner
   background-image: url('/images/the-born-readies-merch.jpg')
+  button
+    margin: 20px auto
+  section
+    .ep
+      width: 100%
+      height: 100%
+      position: relative
+    .content
+      top: 50%
+      width: 100%
+      transform: translate(-10%, -50%)
+      position: absolute
+    img
+      transition: all $speed $evil_ease
+      width: 90%
+      height: 100%
   h1
     letter-spacing: -3px
+    padding-right: 40px

@@ -21,9 +21,6 @@ data = {
           },
           {
             "title": "Photos"
-          },
-          {
-            "title": "Photos more"
           }
         ]
       }

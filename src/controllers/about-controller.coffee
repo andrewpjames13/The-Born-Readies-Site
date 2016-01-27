@@ -26,7 +26,7 @@ class AboutController
 
     # Class vars
     @$detail = $('.detail', @model.getV())
-    @$lightening = $('#lightening', @model.getV())
+    @$button = $('#button', @model.getV())
     @aboutThreshold_hit = false
     @sectionCount = 0
     @sectionTitle = ""
@@ -39,7 +39,7 @@ class AboutController
     @observeSomeSweetEvents()
 
   observeSomeSweetEvents: ->
-    @$lightening.on("click", @moveItOnOver)
+    @$button.on("click", @moveItOnOver)
 
   moveItOnOver: =>
     $('.detail > section').css(TBR.utils.transform, TBR.utils.translate(0, "0%"))
