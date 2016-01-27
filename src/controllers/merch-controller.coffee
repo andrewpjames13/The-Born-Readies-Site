@@ -45,6 +45,8 @@ class MerchController
   *----------------------------------------###
   activate_detail: ->
     @$detail.addClass('active')
+    $('#record').css(transform: 'rotate(-390deg)')
+    $('.title').css(transform: 'translate(0%,-21%)', opacity: 1)
 
   ###
   *------------------------------------------*
@@ -54,6 +56,8 @@ class MerchController
   *----------------------------------------###
   suspend_detail: ->
     @$detail.removeClass('active')
+    $('#record').css(transform: 'rotate(0deg)')
+    $('.title').css(transform: 'translate(0%,50%)', opacity: 0)
 
   ###
   *------------------------------------------*
