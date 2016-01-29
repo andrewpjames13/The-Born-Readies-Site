@@ -55,6 +55,7 @@ class Application
     @$master_slider = $('#master-slider')
     @$borders = $('.top-border, .right-border, .bottom-border, .left-border')
     @active_c = null
+    @$back_button = $('#back-btn')
 
     # Supported?
     if @$fallback.is(':hidden')
@@ -215,12 +216,17 @@ class Application
       $('.hero').addClass('fade-out')
       @$borders.addClass('black')
       @active_c.activate_detail()
+      @$back_button.removeClass('hidden').addClass('show')
+      @$back_button.on "click", ->
+        href = TBR.data.pages[TBR.active_page_index].slug
+        History.pushState(null, null, "/#{href}")
     else
       @nav_slider_c.activate()
       @$master_slider.removeClass('move-it-on-over')
       $('.detail').addClass('fade-out')
       $('.hero').removeClass('fade-out')
       @$borders.removeClass('black')
+      @$back_button.removeClass('show').addClass('hidden')
       if TBR.router.getPreviousState().key.split(':')[1] is "detail"
         @active_c.suspend_detail()
 
