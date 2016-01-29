@@ -39,6 +39,20 @@ class MainNavController
   *----------------------------------------###
   observeSomeSweetEvents: ->
     @$menuIcon.on("click", @toggleNav)
+    $('a').on("click", @goTo)
+
+  goTo: =>
+    @navOpen = false
+    @$navContainer.animate { opacity: '0' }, 400, ->
+      $('.nav-container').removeClass('open').addClass('closed')
+    href = event.currentTarget.attributes[0].value
+
+    setIt = setTimeout =>
+      if href == "home"
+        History.pushState(null, null, "/")
+      else
+        History.pushState(null, null, "/#{href}")
+    , 800
 
   toggleNav: =>
     if @navOpen is false

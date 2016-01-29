@@ -3,7 +3,7 @@
     <div class="centered-content">
     <ul>
       <% for i, p of TBR.data.pages: %>
-        <li><a><%- p.title %></a><a data-id="<%= p.id %>" href="/<%= p.slug %>"><%- p.title %></a></li>
+        <li><a><%- p.title %></a><a data-id="<%= p.id %>"><%- p.title %></a></li>
       <% end %>
     </ul>
     </div>
