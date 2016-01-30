@@ -48,6 +48,7 @@ class NavSliderController
 
   previousSlide: =>
     if TBR.active_page_index > 0
+      console.log 'PREV'
       href = TBR.data.pages[TBR.active_page_index - 1].slug
       History.pushState(null, null, "/#{href}")
       @$bottomBorder.animate { height: '1.5em' }, 800
@@ -58,6 +59,7 @@ class NavSliderController
 
   nextSlide: =>
     if TBR.active_page_index < TBR.total_pages - 1
+      console.log 'NEXT'
       href = TBR.data.pages[TBR.active_page_index + 1].slug
       History.pushState(null, null, "/#{href}")
       if TBR.total_pages - 1 is TBR.active_page_index
@@ -86,8 +88,8 @@ class NavSliderController
   activate: ->
     # Turn on events
     @model.getE()
-      .off('mousewheel')
-      .on('mousewheel', @onMousewheel)
+      .off('mousewheel.nav')
+      .on('mousewheel.nav', @onMousewheel)
 
   ###
   *------------------------------------------*
@@ -97,6 +99,6 @@ class NavSliderController
   *----------------------------------------###
   suspend: ->
     # Turn off events
-    @model.getE().off('mousewheel')
+    @model.getE().off('mousewheel.nav')
 
 module.exports = NavSliderController

@@ -25,16 +25,21 @@ class AboutController
     @model.getE().append(@model.getV())
 
     # Class vars
-    @$detail = $('.detail', @model.getV())
-    @$button = $('#button', @model.getV())
-    @aboutThreshold_hit = false
-    @sectionCount = 0
-    @sectionTitle = ""
-    @activeSectionIndex = 0
-    @totalSections = 0
+
+    @$button = $('button', @model.getV())
+    @$detail_slider = $('.detail-slider', @model.getV())
+    @$section = $('section', @model.getV())
+
     @$bottomBorder = $('.bottom-border')
     @$musicMenu = $('#music-menu')
     @$musicList = $('.menu-controls')
+
+    @threshold_hit = false
+    @sectionCount = 0
+    @activeSectionIndex = 0
+    @in_detail = false
+    @totalSections = @$section.length
+
     # Observe
     @observeSomeSweetEvents()
 
@@ -42,7 +47,6 @@ class AboutController
     @$button.on("click", @moveItOnOver)
 
   moveItOnOver: =>
-    $('.detail > section').css(TBR.utils.transform, TBR.utils.translate(0, "0%"))
     href = TBR.data.pages[TBR.active_page_index].detail.slug
     History.pushState(null, null, "/#{href}")
 
@@ -53,28 +57,26 @@ class AboutController
   | Mousewheelie.
   *----------------------------------------###
   onMousewheel: (e) =>
-    e.preventDefault()
+    if @in_detail is true
+      e.preventDefault()
 
-    @sectionTitle = TBR.data.pages[TBR.active_page_index].detail.sections[@sectionCount].title
-    @activeSectionIndex = _.findIndex(TBR.data.pages[TBR.active_page_index].detail.sections, {"title": @sectionTitle})
-    @totalSections = TBR.data.pages[TBR.active_page_index].detail.sections.length
-
-    if @aboutThreshold_hit is false
-      d = (e.deltaY * e.deltaFactor)
-      if Math.abs(d) >= 20
-        @aboutThreshold_hit = true
-        if d > 0
-          @previousSection()
-        else if d < 0
-          @nextSection()
-        setTimeout =>
-          @aboutThreshold_hit = false
-        , 666
+      if @threshold_hit is false
+        d = (e.deltaY * e.deltaFactor)
+        if Math.abs(d) >= 20
+          @threshold_hit = true
+          if d > 0
+            @previousSection()
+          else if d < 0
+            @nextSection()
+          setTimeout =>
+            @threshold_hit = false
+          , 666
 
   previousSection: =>
     if @activeSectionIndex > 0
-      @sectionCount -= 1
-      @slideSection()
+      @activeSectionIndex -= 1
+      @updateDetailSlider()
+
       @$bottomBorder.animate { height: '1.5em' }, 800
       @$musicMenu.animate { bottom: '0' }, 800
       @$musicList.animate { bottom: '0' }, 800
@@ -82,9 +84,11 @@ class AboutController
 
   nextSection: =>
     if @activeSectionIndex < @totalSections - 1
-      @sectionCount += 1
-      @slideSection()
+      @activeSectionIndex += 1
+      @updateDetailSlider()
+
       if @totalSections - 1 is @activeSectionIndex
+        TBR.$body.trigger('footer_expand')
         @$bottomBorder.animate { height: '3em' }, 800
         @$musicMenu.animate { bottom: '1.5em' }, 800
         @$musicList.animate { bottom: '.5' }, 800
@@ -92,15 +96,13 @@ class AboutController
 
   ###
   *------------------------------------------*
-  | setState:void (-)
+  | updateDetailSlider:void (-)
   |
-  | Set state.
+  | Update detail slider.
   *----------------------------------------###
-  slideSection: ->
-    yMover = -(@sectionCount * 100)
-    $('.detail > section').css(TBR.utils.transform, TBR.utils.translate(0, "#{yMover}%"))
-    @sectionTitle = TBR.data.pages[TBR.active_page_index].detail.sections[@sectionCount].title
-    @activeSectionIndex = _.findIndex(TBR.data.pages[TBR.active_page_index].detail.sections, {"title": @sectionTitle})
+  updateDetailSlider: ->
+    y = -(@activeSectionIndex * 100)
+    @$detail_slider.css(TBR.utils.transform, TBR.utils.translate(0,"#{y}%"))
 
   ###
   *------------------------------------------*
@@ -109,7 +111,10 @@ class AboutController
   | Activate detail.
   *----------------------------------------###
   activate_detail: ->
-    @$detail.addClass('active')
+    @in_detail = true
+    @activeSectionIndex = 0
+
+    @model.getE().addClass('detail-mode')
 
   ###
   *------------------------------------------*
@@ -118,7 +123,8 @@ class AboutController
   | Suspend detail.
   *----------------------------------------###
   suspend_detail: ->
-    @$detail.removeClass('active')
+    @in_detail = false
+    @model.getE().removeClass('detail-mode')
 
   ###
   *------------------------------------------*
@@ -129,8 +135,8 @@ class AboutController
   activate: ->
     @model.getE()
       .addClass('active')
-      .off('mousewheel')
-      .on('mousewheel', @onMousewheel)
+      .off("mousewheel.#{@id}")
+      .on("mousewheel.#{@id}", @onMousewheel)
   ###
   *------------------------------------------*
   | suspend:void (-)
@@ -140,6 +146,6 @@ class AboutController
   suspend: ->
     @model.getE()
     .removeClass('active')
-    .off('mousewheel')
+    .off("mousewheel.#{@id}")
 
 module.exports = AboutController

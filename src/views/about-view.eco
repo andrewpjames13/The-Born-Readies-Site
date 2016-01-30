@@ -14,10 +14,10 @@
         </g>
       </svg>
       <h1>About</h1>
-      <button id="button">Who Are They</button>
+      <button>Who Are They</button>
     </div>
   </div>
-  <div class="detail">
+  <div class="detail-slider">
     <section>
       <div class="col-1-2 who-we-are">
         <div class="content">

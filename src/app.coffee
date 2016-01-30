@@ -56,6 +56,7 @@ class Application
     @$borders = $('.top-border, .right-border, .bottom-border, .left-border')
     @active_c = null
     @$back_button = $('#back-btn')
+    @$nav_button = $('#nav-button')
 
     # Supported?
     if @$fallback.is(':hidden')
@@ -161,16 +162,31 @@ class Application
     # Trigger the initial route
     TBR.router.onAppStateChange()
 
-  do ->
-    path = '//easy.myfonts.net/v2/js?sid=277714(font-family=Seventies)&key=Cnege7R5aL'
-    protocol = if 'https:' == document.location.protocol then 'https:' else 'http:'
-    trial = document.createElement('script')
-    trial.type = 'text/javascript'
-    trial.async = true
-    trial.src = protocol + path
-    head = document.getElementsByTagName('head')[0]
-    head.appendChild trial
-    return
+    # Custom events!
+    TBR.$body
+      .on('footer_expand', =>
+        @footerExpand()
+        # @main_nav_c.toggleNav()
+
+      )
+
+    @$nav_button.on('click', @main_nav_c.toggleNav)
+
+    do ->
+      path = '//easy.myfonts.net/v2/js?sid=277714(font-family=Seventies)&key=Cnege7R5aL'
+      protocol = if 'https:' == document.location.protocol then 'https:' else 'http:'
+      trial = document.createElement('script')
+      trial.type = 'text/javascript'
+      trial.async = true
+      trial.src = protocol + path
+      head = document.getElementsByTagName('head')[0]
+      head.appendChild trial
+      return
+
+  footerExpand: =>
+    # your elements to adjust..
+    console.log 'footer expand'
+
   ###
   *------------------------------------------*
   | goToPage:void (=)
@@ -212,23 +228,21 @@ class Application
     if key_detail is "detail"
       @nav_slider_c.suspend()
       @$master_slider.addClass('move-it-on-over')
-      $('.detail').removeClass('fade-out')
-      $('.hero').addClass('fade-out')
       @$borders.addClass('black')
       @active_c.activate_detail()
-      @$back_button.removeClass('hidden').addClass('show')
-      @$back_button.on "click", ->
-        href = TBR.data.pages[TBR.active_page_index].slug
-        History.pushState(null, null, "/#{href}")
+      @$back_button
+        .addClass('show')
+        .on "click", ->
+          href = TBR.data.pages[TBR.active_page_index].slug
+          History.pushState(null, null, "/#{href}")
     else
       @nav_slider_c.activate()
       @$master_slider.removeClass('move-it-on-over')
-      $('.detail').addClass('fade-out')
-      $('.hero').removeClass('fade-out')
       @$borders.removeClass('black')
-      @$back_button.removeClass('show').addClass('hidden')
+      @$back_button.removeClass('show')
       if TBR.router.getPreviousState().key.split(':')[1] is "detail"
-        @active_c.suspend_detail()
+        if @active_c.suspend_detail
+          @active_c.suspend_detail()
 
 module.exports = Application
 

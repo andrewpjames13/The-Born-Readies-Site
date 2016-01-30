@@ -23,9 +23,7 @@ class MainNavController
     @model.getE().append(@model.getV())
 
     #Class vars
-    @navOpen = false
-    @$navContainer = $('.nav-container', @model.getV())
-    @$menuIcon = $('#nav-button')
+    @$nav_item = $('li span', @model.getE())
 
     # Observe
     @observeSomeSweetEvents()
@@ -38,30 +36,36 @@ class MainNavController
   | Observe some sweet events.
   *----------------------------------------###
   observeSomeSweetEvents: ->
-    @$menuIcon.on("click", @toggleNav)
-    $('a').on("click", @goTo)
+    @$nav_item.on('click', @onClickNavItem)
 
-  goTo: =>
-    @navOpen = false
-    @$navContainer.animate { opacity: '0' }, 400, ->
-      $('.nav-container').removeClass('open').addClass('closed')
-    href = event.currentTarget.attributes[0].value
+  ###
+  *------------------------------------------*
+  | onClickNavItem:void (=)
+  |
+  | Click nav item, hide then update router
+  *----------------------------------------###
+  onClickNavItem: (e) =>
+    $t = $(e.currentTarget)
+    id = if $t.attr('data-id') is 'home' then '' else $t.attr('data-id')
 
-    setIt = setTimeout =>
-      if href == "home"
-        History.pushState(null, null, "/")
-      else
-        History.pushState(null, null, "/#{href}")
-    , 800
+    @hideNav()
+    @model.getE()
+      .off(TBR.utils.transition_end)
+      .one(TBR.utils.transition_end, =>
+        History.pushState(null, null, "/#{id}")
+      )
+
 
   toggleNav: =>
-    if @navOpen is false
-      @navOpen = true
-      @$navContainer.animate { opacity: '.95' }, 200, ->
-      @$navContainer.removeClass('closed').addClass('open')
+    if @model.getE().hasClass('show') is false
+      @showNav()
     else
-      @navOpen = false
-      @$navContainer.animate { opacity: '0' }, 400, ->
-        $('.nav-container').removeClass('open').addClass('closed')
+      @hideNav()
+
+  showNav: =>
+    @model.getE().addClass('show')
+
+  hideNav: =>
+    @model.getE().removeClass('show')
 
 module.exports = MainNavController

@@ -34,11 +34,18 @@
   font-family: $hell_vetica
   font-size: 29px
   color: $gold
-  transition: opacity $speed_metal $evil_ease
-  &.hidden
-    opacity: 0
+  cursor: pointer
+  visibility: hidden
+  opacity: 0
+
+  transition: visibility 0ms linear $speed, opacity $speed $evil_ease
+
   &.show
+    visibility: visible
     opacity: .5
+
+    transition: visibility 0ms linear, opacity $speed_metal $evil_ease $speed_metal
+
   svg
     transform: rotate(180deg)
     width: 10px
