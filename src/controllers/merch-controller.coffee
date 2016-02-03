@@ -33,7 +33,7 @@ class MerchController
     @$button.on("click", @moveItOnOver)
 
   moveItOnOver: =>
-    $('.detail > section').css(TBR.utils.transform, TBR.utils.translate(0, "0%"))
+    # $('.detail > section').css(TBR.utils.transform, TBR.utils.translate(0, "0%"))
     href = TBR.data.pages[TBR.active_page_index].detail.slug
     History.pushState(null, null, "/#{href}")
 
@@ -47,6 +47,8 @@ class MerchController
     @$detail.addClass('active')
     $('#record').css(transform: 'rotate(-390deg)')
     $('.title').css(transform: 'translate(0%,-21%)', opacity: 1)
+    @model.getE().addClass('detail-mode')
+
 
   ###
   *------------------------------------------*
@@ -58,6 +60,7 @@ class MerchController
     @$detail.removeClass('active')
     $('#record').css(transform: 'rotate(0deg)')
     $('.title').css(transform: 'translate(0%,50%)', opacity: 0)
+    @model.getE().removeClass('detail-mode')
 
   ###
   *------------------------------------------*
