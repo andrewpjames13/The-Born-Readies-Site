@@ -6,13 +6,20 @@
   width: 100%
   height: 3em
   padding: 0 1.5em
+  transform: translateY(35px)
+  opacity: 0
   transition: .8s ease-in-out
-  &.closed
-    transform: translateY(35px)
-    opacity: 0
+
   &.open
     transform: translateY(0px)
     opacity: 1
+    .bottom-border
+      height: 3em
+    .menu-controls
+      bottom: .5em
+    #music-menu
+      bottom: 1.5em
+
   svg
     position: relative
     float: left

@@ -30,9 +30,9 @@ class AboutController
     @$detail_slider = $('.detail-slider', @model.getV())
     @$section = $('section', @model.getV())
 
-    @$bottomBorder = $('.bottom-border')
-    @$musicMenu = $('#music-menu')
-    @$musicList = $('.menu-controls')
+    # @$bottomBorder = $('.bottom-border')
+    # @$musicMenu = $('#music-menu')
+    # @$musicList = $('.menu-controls')
 
     @threshold_hit = false
     @sectionCount = 0
@@ -76,11 +76,7 @@ class AboutController
     if @activeSectionIndex > 0
       @activeSectionIndex -= 1
       @updateDetailSlider()
-
-      @$bottomBorder.animate { height: '1.5em' }, 800
-      @$musicMenu.animate { bottom: '0' }, 800
-      @$musicList.animate { bottom: '0' }, 800
-      $('.footer-container').removeClass('open').addClass('closed')
+      TBR.$body.trigger('footer_collapse')
 
   nextSection: =>
     if @activeSectionIndex < @totalSections - 1
@@ -89,10 +85,6 @@ class AboutController
 
       if @totalSections - 1 is @activeSectionIndex
         TBR.$body.trigger('footer_expand')
-        @$bottomBorder.animate { height: '3em' }, 800
-        @$musicMenu.animate { bottom: '1.5em' }, 800
-        @$musicList.animate { bottom: '.5' }, 800
-        $('.footer-container').removeClass('closed').addClass('open')
 
   ###
   *------------------------------------------*

@@ -30,6 +30,10 @@ AboutController = require './controllers/about-controller'
 MerchModel = require './models/merch-model'
 MerchController = require './controllers/merch-controller'
 
+# Home
+ContactModel = require './models/contact-model'
+ContactController = require './controllers/contact-controller'
+
 class Application
 
   ###
@@ -70,10 +74,6 @@ class Application
       else
         TBR.$html.addClass('finger-blaster')
 
-    if TBR.total_pages - 1 is TBR.active_page_index
-      $('.bottom-border').animate { height: '3em' }, 800
-      $('#music-menu, .menu-controls').animate { bottom: '1.9em' }, 800
-      $('.footer-container').removeClass('closed').addClass('open')
   ###
   *------------------------------------------*
   | routes:void (-)
@@ -149,6 +149,12 @@ class Application
       'model': @merch_m
     })
 
+    # Contact
+    @contact_m = new ContactModel({'$el': $('#contact'), 'id': 'contact'})
+    @contact_c = new ContactController({
+      'model': @contact_m
+    })
+
     # Observe
     @observeSomeSweetEvents()
 
@@ -166,8 +172,9 @@ class Application
     TBR.$body
       .on('footer_expand', =>
         @footerExpand()
-        # @main_nav_c.toggleNav()
-
+      )
+      .on('footer_collapse', =>
+        @footerCollapse()
       )
 
     @$nav_button.on('click', @main_nav_c.toggleNav)
@@ -184,8 +191,12 @@ class Application
       return
 
   footerExpand: =>
-    # your elements to adjust..
+    $('.footer-container').addClass('open')
     console.log 'footer expand'
+
+  footerCollapse: =>
+    $('.footer-container').removeClass('open')
+    console.log 'close expand'
 
   ###
   *------------------------------------------*
@@ -206,6 +217,8 @@ class Application
     else if key_group is 'about'
       page = @about_c
     else if key_group is 'merch'
+      page = @merch_c
+    else if key_group is 'contact'
       page = @merch_c
 
     # Suspend and activate old/current pages.

@@ -1,8 +1,8 @@
 data = {
   "pages": [
     {
-      "id": "home",
-      "title": "Home",
+      "id": "contact",
+      "title": "Contac",
       "slug": "",
       "detail":{
         "sections":[]
@@ -35,8 +35,19 @@ data = {
         "sections": [
           {
             "title": "Self Titled EP"
+          },
+          {
+            "title": "Born Readies Patch"
           }
         ]
+      }
+    },
+    {
+      "id": "contact",
+      "title": "Contact",
+      "slug": "contact",
+      "detail":{
+        "sections":[]
       }
     }
   ],
