@@ -21,9 +21,7 @@ class NavSliderController
   build: ->
     # Class vars
     @threshold_hit = false
-    @$bottomBorder = $('.bottom-border', @model.getV())
-    @$musicMenu = $('#music-menu', @model.getV())
-    @$musicList = $('.menu-controls', @model.getV())
+
   ###
   *------------------------------------------*
   | onMousewheel:void (=)
@@ -51,10 +49,7 @@ class NavSliderController
       console.log 'PREV'
       href = TBR.data.pages[TBR.active_page_index - 1].slug
       History.pushState(null, null, "/#{href}")
-      @$bottomBorder.animate { height: '1.5em' }, 800
-      @$musicMenu.animate { bottom: '0' }, 800
-      @$musicList.animate { bottom: '0' }, 800
-      $('.footer-container').removeClass('open').addClass('closed')
+      TBR.$body.trigger('footer_collapse')
 
 
   nextSlide: =>
@@ -63,10 +58,7 @@ class NavSliderController
       href = TBR.data.pages[TBR.active_page_index + 1].slug
       History.pushState(null, null, "/#{href}")
       if TBR.total_pages - 1 is TBR.active_page_index
-        @$bottomBorder.animate { height: '3em' }, 800
-        @$musicMenu.animate { bottom: '1.5em' }, 800
-        @$musicList.animate { bottom: '.5' }, 800
-        $('.footer-container').removeClass('closed').addClass('open')
+        TBR.$body.trigger('footer_expand')
 
 
   ###

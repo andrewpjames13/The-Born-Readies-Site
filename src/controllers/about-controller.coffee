@@ -30,9 +30,6 @@ class AboutController
     @$detail_slider = $('.detail-slider', @model.getV())
     @$section = $('section', @model.getV())
 
-    # @$bottomBorder = $('.bottom-border')
-    # @$musicMenu = $('#music-menu')
-    # @$musicList = $('.menu-controls')
 
     @threshold_hit = false
     @sectionCount = 0
@@ -76,6 +73,7 @@ class AboutController
     if @activeSectionIndex > 0
       @activeSectionIndex -= 1
       @updateDetailSlider()
+
       TBR.$body.trigger('footer_collapse')
 
   nextSection: =>

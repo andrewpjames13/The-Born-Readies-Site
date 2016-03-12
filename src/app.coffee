@@ -61,6 +61,9 @@ class Application
     @active_c = null
     @$back_button = $('#back-btn')
     @$nav_button = $('#nav-button')
+    @$bottomBorder = $('.bottom-border')
+    @$musicMenu = $('#music-menu')
+    @$musicList = $('.menu-controls')
 
     # Supported?
     if @$fallback.is(':hidden')
@@ -74,6 +77,9 @@ class Application
       else
         TBR.$html.addClass('finger-blaster')
 
+    if TBR.total_pages - 1 is TBR.active_page_index
+      $('#music-menu, .menu-controls').animate { bottom: '1.9em' }, 800
+      @footerExpand()
   ###
   *------------------------------------------*
   | routes:void (-)
@@ -192,11 +198,17 @@ class Application
 
   footerExpand: =>
     $('.footer-container').addClass('open')
-    console.log 'footer expand'
+    $('.bottom-border').animate { height: '3em' }, 800
+    $('#music-menu').animate { bottom: '1.5em' }, 800
+    $('.menu-controls').animate { bottom: '.5' }, 800
 
   footerCollapse: =>
     $('.footer-container').removeClass('open')
-    console.log 'close expand'
+    $('.bottom-border').animate { height: '1.5em' }, 800
+    $('#music-menu').animate { bottom: '0' }, 800
+    $('.menu-controls').animate { bottom: '0' }, 800
+
+    # console.log 'close expand'
 
   ###
   *------------------------------------------*
