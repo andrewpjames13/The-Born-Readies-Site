@@ -1,8 +1,8 @@
 data = {
   "pages": [
     {
-      "id": "contact",
-      "title": "Contac",
+      "id": "home",
+      "title": "Home",
       "slug": "",
       "detail":{
         "sections":[]
