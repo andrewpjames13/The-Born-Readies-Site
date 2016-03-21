@@ -34,6 +34,10 @@ MerchController = require './controllers/merch-controller'
 ContactModel = require './models/contact-model'
 ContactController = require './controllers/contact-controller'
 
+# Loader
+FullyLoaderModel = require './models/base-model'
+FullyLoaderController = require './controllers/fully-loader-controller'
+
 class Application
 
   ###
@@ -159,6 +163,12 @@ class Application
     @contact_m = new ContactModel({'$el': $('#contact'), 'id': 'contact'})
     @contact_c = new ContactController({
       'model': @contact_m
+    })
+
+    # Loader
+    @fully_loader_m = new FullyLoaderModel({'$el': $('#fully-loader')})
+    @fully_loader_c = new FullyLoaderController({
+      'model': @main_nav_m
     })
 
     # Observe
