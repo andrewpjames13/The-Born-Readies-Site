@@ -31,6 +31,7 @@ class SoundBarnController
     @randomSongInt = 0
     @menuOpen = false
     @myTimeOut = null
+    @currentVolume = 0
     @$trigger = $('.trigger', @model.getV())
     @$shuffleButton = $('#shuffle-song', @model.getV())
     @$nextButton = $('#next-song', @model.getV())
@@ -39,7 +40,8 @@ class SoundBarnController
     @observeSomeSweetEvents()
     # First song to play and listen for end
     @$playPauseButton.addClass("pause-btn")
-    @nowPlaying.pause()
+    @nowPlaying.volume = @currentVolume
+    @nowPlaying.play()
     @playNextWhenSongEnds()
 
   ###
@@ -49,6 +51,15 @@ class SoundBarnController
   | Observe some sweet events.
   *----------------------------------------###
   observeSomeSweetEvents: ->
+    fadeItIn = setInterval((=>
+      if @currentVolume <= 1
+        @nowPlaying.volume = @currentVolume
+        @currentVolume += .05
+      else
+        clearTimeout(fadeItIn)
+      return
+    ), 200)
+
     @model.getV().on("mouseenter", @stopTimeOut)
     @$trigger.on("click", @toggleMenu)
     @$shuffleButton.on("click", @shuffleSong)
