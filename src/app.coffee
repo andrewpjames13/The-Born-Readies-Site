@@ -57,6 +57,7 @@ class Application
     TBR.router = new Routes()
     TBR.active_page_index = 0
     TBR.total_pages = TBR.data.pages.length
+    TBR.threshold_hit = false
 
     # Class vars
     @$fallback = $('#fallback')
@@ -251,7 +252,6 @@ class Application
     # Update master slider on x-axis.
     if key_detail is "detail"
       @nav_slider_c.suspend()
-      @$master_slider.addClass('move-it-on-over')
       @$borders.addClass('black')
       @active_c.activate_detail()
       @$back_button
@@ -261,7 +261,6 @@ class Application
           History.pushState(null, null, "/#{href}")
     else
       @nav_slider_c.activate()
-      @$master_slider.removeClass('move-it-on-over')
       @$borders.removeClass('black')
       @$back_button.removeClass('show')
       if TBR.router.getPreviousState().key.split(':')[1] is "detail"

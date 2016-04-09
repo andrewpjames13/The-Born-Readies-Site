@@ -19,8 +19,6 @@ class NavSliderController
   | Build.
   *----------------------------------------###
   build: ->
-    # Class vars
-    @threshold_hit = false
 
   ###
   *------------------------------------------*
@@ -31,17 +29,17 @@ class NavSliderController
   onMousewheel: (e) =>
     e.preventDefault()
 
-    if @threshold_hit is false
+    if TBR.threshold_hit is false
       d = (e.deltaY * e.deltaFactor)
       if Math.abs(d) >= 20
-        @threshold_hit = true
+        TBR.threshold_hit = true
         if d > 0
           @previousSlide()
         else if d < 0
           @nextSlide()
 
         setTimeout =>
-          @threshold_hit = false
+          TBR.threshold_hit = false
         , 666
 
   previousSlide: =>

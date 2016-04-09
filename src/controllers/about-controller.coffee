@@ -30,8 +30,6 @@ class AboutController
     @$detail_slider = $('.detail-slider', @model.getV())
     @$section = $('section', @model.getV())
 
-
-    @threshold_hit = false
     @sectionCount = 0
     @activeSectionIndex = 0
     @in_detail = false
@@ -57,20 +55,23 @@ class AboutController
     if @in_detail is true
       e.preventDefault()
 
-      if @threshold_hit is false
+      if TBR.threshold_hit is false
         d = (e.deltaY * e.deltaFactor)
         if Math.abs(d) >= 20
-          @threshold_hit = true
+          TBR.threshold_hit = true
           if d > 0
             @previousSection()
           else if d < 0
             @nextSection()
           setTimeout =>
-            @threshold_hit = false
+            TBR.threshold_hit = false
           , 666
 
   previousSection: =>
-    if @activeSectionIndex > 0
+    if @activeSectionIndex == 0
+      href = TBR.data.pages[TBR.active_page_index].slug
+      History.pushState(null, null, "/#{href}")
+    else if @activeSectionIndex > 0
       @activeSectionIndex -= 1
       @updateDetailSlider()
 

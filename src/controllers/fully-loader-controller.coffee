@@ -45,7 +45,7 @@ class FullyLoaderController
         $('#fully-loader').removeClass('show')
         clearTimeout(counting)
       return
-    ), 70)
+    ), 20)
 
 
 
