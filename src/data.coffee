@@ -4,6 +4,7 @@ data = {
       "id": "home",
       "title": "Home",
       "slug": "",
+      "assets": ["/images/the-born-readies-logo.svg", "/images/ricepaper-texture.png"],
       "detail":{
         "sections":[]
       }
@@ -12,6 +13,8 @@ data = {
       "id": "about",
       "title": "About",
       "slug": "about",
+      "poster": "/images/the-born-readies-about.jpg",
+      "assets": ["/images/press-kit-img.jpg"],
       "detail": {
         "title": "About Detail",
         "slug": "about/detail"
@@ -29,6 +32,8 @@ data = {
       "id": "merch",
       "title": "Merch",
       "slug": "merch",
+      "poster": "/images/the-born-readies-merch.jpg",
+      "assets": ["/images/TBR-album-art.jpg", "/images/TBR-vinyl-ep.jpg"]
       "detail": {
         "title": "Merch Detail",
         "slug": "merch/detail"
@@ -46,6 +51,7 @@ data = {
       "id": "contact",
       "title": "Contact",
       "slug": "contact",
+      "poster": "/images/the-born-readies-contact.jpg",
       "detail":{
         "sections":[]
       }

@@ -58,6 +58,7 @@ class Application
     TBR.active_page_index = 0
     TBR.total_pages = TBR.data.pages.length
     TBR.threshold_hit = false
+    TBR.assets = []
 
     # Class vars
     @$fallback = $('#fallback')
@@ -73,6 +74,16 @@ class Application
     # Supported?
     if @$fallback.is(':hidden')
       @$fallback.remove()
+
+      # Get assets to load
+      for page in TBR.data.pages
+        if page.poster
+          TBR.assets.push(page.poster)
+
+        if page.assets
+          for asset in page.assets
+            TBR.assets.push(asset)
+
       @routes()
       @build()
 
@@ -169,8 +180,11 @@ class Application
     # Loader
     @fully_loader_m = new FullyLoaderModel({'$el': $('#fully-loader')})
     @fully_loader_c = new FullyLoaderController({
-      'model': @main_nav_m
+      'model': @fully_loader_m
     })
+
+    # Get loaded!
+    @fully_loader_c.getLoaded()
 
     # Observe
     @observeSomeSweetEvents()

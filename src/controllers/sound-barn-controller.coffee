@@ -20,6 +20,7 @@ class SoundBarnController
   *----------------------------------------###
   build: ->
     @model.setV($(JST["sound-barn-view"]()))
+    console.log @model.getE()
     @model.getE().append(@model.getV())
 
     #Class vars

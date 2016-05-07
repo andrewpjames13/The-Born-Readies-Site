@@ -7,7 +7,7 @@
   opacity: 0
   font-family: SeventiesPrinted
 
-  transition: visibility 0ms linear $speed_metal, opacity $speed_metal $evil_ease
+  transition: visibility 0ms linear 1000ms, opacity $speed_metal $evil_ease 334ms
 
   &.show
     visibility: visible
@@ -19,6 +19,7 @@
     font-size: 7vw
     letter-spacing: 10px
     width: 50%
+    height: auto
     position: absolute
     top: 50%
     left: 50%
@@ -26,3 +27,20 @@
 
     #TBR
       width: 7%
+
+    .loading
+      display: block
+      letter-spacing: 0px
+      margin-right: 8px
+
+    #lightening
+      width: 20px
+      height: auto
+
+  .loader-bar
+    width: 0%
+    height: 5px
+    position: absolute
+    top: 0
+    background-color: $gold
+    transition: width $speed_metal $evil_ease

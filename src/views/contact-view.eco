@@ -1,4 +1,4 @@
-<div class="slide-inner">
+<div class="slide-inner" style="background-image: url('<%= @poster %>');">
   <div class="hero">
     <div class="centered-content">
       <svg id="TBR" viewBox="0 0 54.2 23">
@@ -18,6 +18,6 @@
     </div>
   </div>
   <div class="detail-slider">
-    
+
   </div>
 </div>
