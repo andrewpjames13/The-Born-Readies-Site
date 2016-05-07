@@ -64,8 +64,10 @@ class MainNavController
 
   showNav: =>
     @model.getE().addClass('show')
+    $('#nav-button').addClass('open')
 
   hideNav: =>
     @model.getE().removeClass('show')
+    $('#nav-button').removeClass('open')
 
 module.exports = MainNavController
