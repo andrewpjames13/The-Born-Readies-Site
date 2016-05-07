@@ -1,42 +1,36 @@
 #nav-button
-  width: 60px
-  height: 45px
+  width: 25px
+  height: 25px
   position: absolute
-  right: 0
+  right: 48px
+  top: 48px
   transform: rotate(0deg)
   transition: $speed_metal $evil_ease
   cursor: pointer
 
   .hamburger
-    display: block
     position: absolute
-    height: 10px
+    height: 4px
     width: 100%
     background: $gold
     opacity: 1
-    left: 0
     transform: rotate(0deg)
     transition: $speed $evil_ease
 
     &:nth-child(1)
       top: 0px
-      transform-origin: left center
 
     &:nth-child(2)
-      top: 18px
-      transform-origin: left center
+      top: 7px
 
     &:nth-child(3)
-      top: 36px
-      transform-origin: left center
-
+      top: 14px
 
   &.open
     .hamburger
       &:nth-child(1)
         transform: rotate(45deg)
-        top: -3px
-        left: 8px
+        top: 3px
 
       &:nth-child(2)
         width: 0%
@@ -44,8 +38,7 @@
 
       &:nth-child(3)
         transform: rotate(-45deg)
-        top: 39px
-        left: 8px
+        top: 3px
 
 #main-nav
   position: absolute
