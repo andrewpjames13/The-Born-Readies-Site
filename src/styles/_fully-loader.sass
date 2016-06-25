@@ -1,7 +1,7 @@
 #fully-loader
   width: 100%
   height: 100%
-  background-color: $white
+  // background-color: $white
   position: relative
   visibility: hidden
   opacity: 0
@@ -13,34 +13,78 @@
     visibility: visible
     opacity: 1
 
-  .loader-content
-    color: $gold
-    text-align: center
-    font-size: 7vw
-    letter-spacing: 10px
-    width: 50%
-    height: auto
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
+  @keyframes bounce
+    0%
+      transform: scale(1)
+    50%
+      transform: scale(.3)
+    100%
+      transform: scale(1)
+  @keyframes grow
+    0%
+      transform: scale(.3)
+    100%
+      transform: scale(1.2)
+  .centered-content img
+    animation-name: bounce
+    animation-duration: 2s
+    // animation-iteration-count: 2
+    animation-timing-function: ease-in-out
+  // .loader-content
+  //   color: $gold
+  //   text-align: center
+  //   font-size: 7vw
+  //   letter-spacing: 10px
+  //   width: 50%
+  //   height: auto
+  //   position: absolute
+  //   top: 50%
+  //   left: 50%
+  //   transform: translate(-50%, -50%)
+  //
+  //   #TBR
+  //     width: 7%
+  //
+  //   .loading
+  //     display: block
+  //     letter-spacing: 0px
+  //     margin-right: 8px
+  //
+  //   #lightening
+  //     width: 20px
+  //     height: auto
 
-    #TBR
-      width: 7%
-
-    .loading
-      display: block
-      letter-spacing: 0px
-      margin-right: 8px
-
-    #lightening
-      width: 20px
-      height: auto
-
-  .loader-bar
+  .loader-bar-top
     width: 0%
     height: 5px
     position: absolute
     top: 0
     background-color: $gold
     transition: width $speed_metal $evil_ease
+
+  .loader-bar-bottom
+    width: 0%
+    height: 5px
+    position: absolute
+    bottom: 0
+    left: 0
+    background-color: $gold
+    transition: width $speed_metal $evil_ease
+
+  .loader-bar-left
+    width: 5px
+    height: 0%
+    position: absolute
+    left: 0
+    top: 0
+    background-color: $gold
+    transition: height $speed_metal $evil_ease
+
+  .loader-bar-right
+    width: 5px
+    height: 0%
+    position: absolute
+    right: 0
+    top: 0
+    background-color: $gold
+    transition: height $speed_metal $evil_ease

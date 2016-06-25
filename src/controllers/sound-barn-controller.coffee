@@ -42,7 +42,7 @@ class SoundBarnController
     # First song to play and listen for end
     @$playPauseButton.addClass("pause-btn")
     @nowPlaying.volume = @currentVolume
-    @nowPlaying.play()
+    @nowPlaying.pause()
     @playNextWhenSongEnds()
 
   ###
