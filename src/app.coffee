@@ -273,6 +273,8 @@ class Application
         .on "click", ->
           href = TBR.data.pages[TBR.active_page_index].slug
           History.pushState(null, null, "/#{href}")
+          $('.detail-slider').css(TBR.utils.transform, TBR.utils.translate(0,0))
+
     else
       @nav_slider_c.activate()
       @$borders.removeClass('black')
