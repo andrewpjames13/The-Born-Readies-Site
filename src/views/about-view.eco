@@ -45,6 +45,13 @@
                 </svg>
             </a>
             </li>
+            <li class="press-kit">
+              <a> Download the Press Kit
+                <svg viewBox="0 0 12.1 26.5">
+                  <polygon fill="#A29060" points="4.9,26.2 0.1,26.2 7.2,13.3 0.1,0.3 4.9,0.3 12,13.3 "/>
+                </svg>
+              </a>
+            </li>
             <li>
               <a href="#">Contact
                 <svg viewBox="0 0 12.1 26.5">

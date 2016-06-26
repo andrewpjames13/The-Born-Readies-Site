@@ -59,7 +59,10 @@
 
 
   svg#TBR
-    width: 17%
+    width: 20%
+    @media screen and (min-width: 768px)
+      width: 8%
+
   svg#lightening
     width: 2%
     margin: 0 auto
@@ -68,7 +71,7 @@
 .centered-content
   position: absolute
   color: $gold
-  width: 25vw
+  width: 50vw
   height: auto
   top: 50%
   left: 50%
@@ -76,17 +79,21 @@
   text-align: center
 
   h1
-    font-size: 10vw
-    padding-right: 41px
+    font-size: 20vw
+    padding-right: 4vw
     transition: all 300ms $evil_ease
+    @media screen and (min-width: 768px)
+      font-size: 10vw
 
   button
-    width: 200px
+    width: 100%
+    max-width: 200px
     height: 50px
     border: 2px solid $gold
     margin: 30px auto
     color: $gold
     cursor: pointer
+    font-size: 15px
     transition: all 0.25s ease-in-out
     &:hover
       background-color: $gold
@@ -101,13 +108,16 @@
   background-color: $white
 
 #home .centered-content
-  width: 30vw
+  @media screen and (min-width: 768px)
+    width: 30vw
 
 #about .slide-inner
   section
     .who-we-are, .press-kit
-      height: 100%
+      height: 50%
       position: relative
+      @include respond-above($media_768)
+        height: 100%
       .content, .press-btn
         position: absolute
         width: 75%
@@ -116,19 +126,29 @@
         left: 50%
         transform: translate(-50%, -50%)
         ul
-          padding-left: 30px
           margin: 10px 0 25px 0
           color: $gold
           font-size: 14px
           line-height: 20px
-          width: 450px
+          max-width: 450px
+          @include respond-above($media_768)
+            padding-left: 30px
+
+          li.press-kit
+            display: inline-block
+            @include respond-above($media_768)
+              display: none
+
           svg
             width: .4em
             height: auto
             margin-left: 10px
       .press-btn
+        display: none
         border: 4px solid rgba(162,144,96,0.15)
         transition: all $speed $evil_ease
+        @include respond-above($media_768)
+          display: block
         &:hover
           border: 4px solid rgba(162,144,96,0.2)
           .content
@@ -159,9 +179,8 @@
             transform: rotate(2deg) translate(25%, 164%)
       .social-media
         width: 100%
-        position: absolute
-        bottom: 0
-        padding-left: 30px
+        @include respond-above($media_768)
+          padding-left: 30px
         svg
           width: 40px
           height: auto
