@@ -74,9 +74,12 @@
   left: 50%
   transform: translate(-50%,-50%)
   text-align: center
+
   h1
     font-size: 10vw
     padding-right: 41px
+    transition: all 300ms $evil_ease
+
   button
     width: 200px
     height: 50px
@@ -88,6 +91,11 @@
     &:hover
       background-color: $gold
       color: $black
+
+  &:hover
+    h1
+      transform: scale(1.03)
+
 
 #home, #about, #merch, #contact
   background-color: $white
