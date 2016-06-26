@@ -238,10 +238,23 @@
         .content
           transform: translate(0, -50%)
           right: 0
+          #shirt-white, #shirt-black
+            &.hide-shirt
+              display: none
           img
             width: 70%
             float: right
         .title
+          width: 50%
           left: unset
-          transform: translate(0%, -10%)
+          transform: translate(0%, -25%)
           opacity: 1
+          .black, .white
+            height: 80px
+            margin: 50px 20%
+            outline: 3px solid $gold
+            cursor: pointer
+          .black
+            background-color: $black
+          .white
+            background-color: $white

@@ -28,7 +28,11 @@ class MerchController
     @$button = $('button', @model.getV())
     @$detail_slider = $('.detail-slider', @model.getV())
     @$section = $('section', @model.getV())
-    
+    @$black_shirt = $('#shirt-black', @model.getV())
+    @$white_shirt = $('#shirt-white', @model.getV())
+    @$black_shirt_swatch = $('#black-hover', @model.getV())
+    @$white_shirt_swatch = $('#white-hover', @model.getV())
+
     @sectionCount = 0
     @activeSectionIndex = 0
     @in_detail = false
@@ -38,6 +42,8 @@ class MerchController
 
   observeSomeSweetEvents: ->
     @$button.on("click", @moveItOnOver)
+    @$black_shirt_swatch.on('click mouseenter', @changeShirts)
+    @$white_shirt_swatch.on('click mouseenter', @changeShirts)
 
   moveItOnOver: =>
     href = TBR.data.pages[TBR.active_page_index].detail.slug
@@ -86,6 +92,15 @@ class MerchController
 
       if @totalSections - 1 is @activeSectionIndex
         TBR.$body.trigger('footer_expand')
+
+  changeShirts: (e) =>
+    if e.target.id == 'black-hover'
+      @$black_shirt.removeClass('hide-shirt')
+      @$white_shirt.addClass('hide-shirt')
+
+    else if e.target.id == 'white-hover'
+      @$white_shirt.removeClass('hide-shirt')
+      @$black_shirt.addClass('hide-shirt')
 
   ###
   *------------------------------------------*
