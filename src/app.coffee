@@ -242,8 +242,10 @@ class Application
       page = @home_c
     else if key_group is 'about'
       page = @about_c
+      $('.detail-slider').css(TBR.utils.transform, TBR.utils.translate(0,0))
     else if key_group is 'merch'
       page = @merch_c
+      $('.detail-slider').css(TBR.utils.transform, TBR.utils.translate(0,0))
     else if key_group is 'contact'
       page = @merch_c
 
