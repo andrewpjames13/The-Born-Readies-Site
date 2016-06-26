@@ -184,7 +184,7 @@
     button
       margin: 20px auto
     section
-      .ep, .shirt
+      .ep, .shirt, .patch
         width: 100%
         height: 100%
         position: relative
@@ -226,6 +226,17 @@
 
   &.detail-mode
     .slide-inner section
+      .patch
+        .content
+          transform: translate(0, -50%)
+          right: 0
+          width: 50%
+        .title
+          width: 50%
+          left: unset
+          transform: translate(0%, -10%)
+          opacity: 1
+
       .ep
         .content
           width: 100%
@@ -234,6 +245,7 @@
         .title
           transform: translate(0%, -21%)
           opacity: 1
+
       .shirt
         .content
           transform: translate(0, -50%)
