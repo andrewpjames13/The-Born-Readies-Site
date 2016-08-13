@@ -31,7 +31,7 @@ class NavSliderController
 
     if TBR.threshold_hit is false
       d = (e.deltaY * e.deltaFactor)
-      if Math.abs(d) >= 20
+      if Math.abs(d) >= 60
         TBR.threshold_hit = true
         if d > 0
           @previousSlide()
