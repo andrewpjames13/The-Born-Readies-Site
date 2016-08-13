@@ -113,6 +113,10 @@
 
 #about .slide-inner
   section
+    .press-kit
+      display: none
+      @include respond-above($media_768)
+        display: inline
     .who-we-are, .press-kit
       height: 50%
       position: relative
@@ -193,16 +197,20 @@
   section.photos
     .content
       position: absolute
-      width: 95%
+      width: 87%
       height: 90%
       top: 50%
       left: 50%
       transform: translate(-50%, -50%)
     .col-1-3
       background-color: $gold
-      margin: 1.11% 1.11% 0 0
-      width: 32.22%
-      height: 40%
+      margin-top: 1.11%
+      width: 100%
+      height: 14%
+      @include respond-above($media_768)
+        margin: 1.11% 1.11% 0 0
+        width: 32.22%
+        height: 42%
 
   section:nth-child(3)
     background-color: blue
