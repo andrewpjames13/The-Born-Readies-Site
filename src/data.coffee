@@ -23,7 +23,15 @@ data = {
             "title": "Who We are"
           },
           {
-            "title": "Photos"
+            "title": "Photos",
+            "photos": [
+              "/images/TBR-photo-album-001.jpg",
+              "/images/TBR-photo-album-002.jpg",
+              "/images/TBR-photo-album-003.jpg",
+              "/images/TBR-photo-album-004.jpg",
+              "/images/TBR-photo-album-005.jpg",
+              "/images/TBR-photo-album-006.jpg"
+            ]
           }
         ]
       }
