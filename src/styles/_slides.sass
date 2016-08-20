@@ -207,6 +207,18 @@
       margin-top: 1.11%
       width: 100%
       height: 14%
+      &.photo
+        opacity: .15
+        background-position: center
+        background-size: cover
+        background-repeat: no-repeat
+        transition: all $speed $evil_ease
+        cursor: pointer
+        filter: grayscale(1)
+        &:hover
+          filter: grayscale(0)
+          opacity: .5
+
       @include respond-above($media_768)
         margin: 1.11% 1.11% 0 0
         width: 32.22%
