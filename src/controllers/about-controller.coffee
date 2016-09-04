@@ -40,6 +40,16 @@ class AboutController
 
   observeSomeSweetEvents: ->
     @$button.on("click", @moveItOnOver)
+    $('.photo').on("click", @expandPhoto)
+    $('#photo-light-box').on("click", @closePhoto)
+
+  expandPhoto: (e) =>
+    clickedPhoto = e.target.style.backgroundImage.split('"')[1]
+    $('#photo-light-box').addClass('show')
+    $('.display-photo').attr("src", clickedPhoto)
+
+  closePhoto: () =>
+    $('#photo-light-box').removeClass('show')
 
   moveItOnOver: =>
     href = TBR.data.pages[TBR.active_page_index].detail.slug

@@ -1,0 +1,28 @@
+#photo-light-box
+  position: absolute
+  top: 0px
+  left: 0px
+  width: 100%
+  height: 100%
+  background-color: $black
+  overflow: hidden
+  visibility: hidden
+  opacity: 0
+  z-index: 1
+
+  transform: scale(0.8) translate3d(0,0,0)
+  transition: visibility 0ms linear $speed, opacity $speed $evil_ease, transform $speed $evil_ease
+
+  &.show
+    visibility: visible
+    opacity: 1
+
+    transform: scale(1.0) translate3d(0,0,0)
+    transition: visibility 0ms linear, opacity $speed $evil_ease, transform $speed $evil_ease
+
+  .display-photo
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 90%
+    transform: translate(-50%,-50%)
