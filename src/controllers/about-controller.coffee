@@ -35,6 +35,9 @@ class AboutController
     @in_detail = false
     @totalSections = @$section.length
 
+    @photoArray = TBR.data.pages[1].detail.sections[1].photos
+    @currentPhotoIndex = 0
+
     # Observe
     @observeSomeSweetEvents()
 
@@ -42,14 +45,44 @@ class AboutController
     @$button.on("click", @moveItOnOver)
     $('.photo').on("click", @expandPhoto)
     $('#photo-light-box').on("click", @closePhoto)
+    $('#photo-light-box').bind("mousewheel", @photoWheelin)
 
   expandPhoto: (e) =>
-    clickedPhoto = e.target.style.backgroundImage.split('"')[1]
+    @currentPhotoIndex = e.target.attributes.index.value
+    clickedPhoto = @photoArray[@currentPhotoIndex]
     $('#photo-light-box').addClass('show')
     $('.display-photo').attr("src", clickedPhoto)
 
   closePhoto: () =>
     $('#photo-light-box').removeClass('show')
+
+  photoWheelin: (e) =>
+    if $('#photo-light-box').hasClass('show')
+      e.preventDefault
+
+      if TBR.threshold_hit is false
+        d = (e.deltaX * e.deltaFactor)
+        if Math.abs(d) >= 20
+          TBR.threshold_hit = true
+          if d > 0
+            if @currentPhotoIndex == @photoArray.length - 1
+              @currentPhotoIndex = 0
+            else
+              @currentPhotoIndex = parseInt(@currentPhotoIndex) + 1
+            nextPhoto = @photoArray[@currentPhotoIndex]
+            $('.display-photo').attr("src", nextPhoto)
+            # @previousSection()
+          else if d < 0
+            if @currentPhotoIndex == 0
+              @currentPhotoIndex = @photoArray.length - 1
+            else
+              @currentPhotoIndex = parseInt(@currentPhotoIndex) - 1
+            prevPhoto = @photoArray[@currentPhotoIndex]
+            $('.display-photo').attr("src", prevPhoto)
+            # @nextSection()
+          setTimeout =>
+            TBR.threshold_hit = false
+          , 666
 
   moveItOnOver: =>
     href = TBR.data.pages[TBR.active_page_index].detail.slug
