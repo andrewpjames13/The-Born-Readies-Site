@@ -239,6 +239,7 @@ class Application
 
     # What page are we going to next?
     if key_group is ''
+      $('#music-menu').addClass('home')
       page = @home_c
     else if key_group is 'about'
       page = @about_c

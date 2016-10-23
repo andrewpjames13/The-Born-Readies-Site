@@ -26,10 +26,13 @@
     .trigger
       border-color: $gold
       background-color: $black
-      box-shadow: 4px 6px 5px 2px black
+      box-shadow: 4px 6px 5px 2px rgba(0, 0, 0, .5)
+      transition: background-color $speed $evil_ease
 
     li
-      box-shadow: 4px 6px 5px 2px black
+      background-color: $black
+      transition: background-color $speed $evil_ease
+      box-shadow: 4px 6px 5px 2px rgba(0, 0, 0, .5)
 
     li:first-child
       transform: scale3d(1, 1, 1) translate3d(37.14px, -244.14px, 0)
@@ -39,6 +42,16 @@
 
     li:nth-child(3)
       transform: scale3d(1, 1, 1) translate3d(173px, -115px, 0)
+
+  &.home
+    .trigger
+      background-color: rgba(0,0,0,0)
+      box-shadow: 4px 6px 5px 2px rgba(0, 0, 0, 0)
+
+    .menu-controls
+      li
+        background-color: rgba(0,0,0,0)
+        box-shadow: 4px 6px 5px 2px rgba(0, 0, 0, 0)
 
   .menu-controls
     position: absolute
@@ -50,10 +63,11 @@
       height: 75px
       border-radius: 50%
       border: 2px solid $gold
-      position: absolute
       background-color: $black
+      position: absolute
       transform: scale3d(0.5, 0.5, 1) translate3d(0,0,0)
       transition: transform 0.25s ease-out
+
 
       button
         svg

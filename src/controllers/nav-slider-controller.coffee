@@ -43,8 +43,10 @@ class NavSliderController
         , 666
 
   previousSlide: =>
+    # if TBR.active_page_index <= 1
+    #   $('#music-menu').addClass('home')
+
     if TBR.active_page_index > 0
-      console.log 'PREV'
       href = TBR.data.pages[TBR.active_page_index - 1].slug
       History.pushState(null, null, "/#{href}")
       TBR.$body.trigger('footer_collapse')
@@ -52,7 +54,7 @@ class NavSliderController
 
   nextSlide: =>
     if TBR.active_page_index < TBR.total_pages - 1
-      console.log 'NEXT'
+      $('#music-menu').removeClass('home')
       href = TBR.data.pages[TBR.active_page_index + 1].slug
       History.pushState(null, null, "/#{href}")
       if TBR.total_pages - 1 is TBR.active_page_index
