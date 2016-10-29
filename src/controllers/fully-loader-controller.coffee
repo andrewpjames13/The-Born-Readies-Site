@@ -26,6 +26,7 @@ class FullyLoaderController
     @total = 0
     @loaded = 0
     @percent = 0
+    @$fillBar = $('.loader-bar-top', @model.getE())
 
   ###
   *------------------------------------------*
@@ -66,16 +67,7 @@ class FullyLoaderController
     @percent = (@loaded / @total) * 100
     if @percent <= 25
       @topPercent = @percent * 4
-      $('.loader-bar-top').css('width', "#{@topPercent}%")
-    # else if @percent <= 50
-    #   @rightPercent = @percent * 4
-    #   $('.loader-bar-right').css('height', "#{@rightPercent}%")
-    # else if @percent <= 75
-    #   @bottomPercent = @percent * 4
-    #   $('.loader-bar-bottom').css('width', "#{@bottomPercent}%")
-    # else if @percent <= 100
-    #   @leftPercent = @percent * 4
-    #   $('.loader-bar-left').css('height', "#{@leftPercent}%")
+      @$fillBar.css('width', "#{@topPercent}%")
 
     if @loaded is @total
       @totallyLoaded()
@@ -87,10 +79,7 @@ class FullyLoaderController
   | totally loaded!
   *----------------------------------------###
   totallyLoaded: =>
-    console.log 'totally loaded!'
-    $('#fully-loader').off(TBR.utils.transition_end).one(TBR.utils.transition_end, =>
-      $('#fully-loader').removeClass('show')
-    )
+    $('#fully-loader').removeClass('show')
 
 
 
