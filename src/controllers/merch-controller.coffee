@@ -145,7 +145,6 @@ class MerchController
     @model.getE().addClass('active')
 
     if TBR.router.getState().key.split(':')[1] is "detail"
-      console.log 'activate merch detail!'
       @model.getE()
         .off("mousewheel.#{@id}")
         .on("mousewheel.#{@id}", @onMousewheel)

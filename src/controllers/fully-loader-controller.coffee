@@ -20,7 +20,6 @@ class FullyLoaderController
   *----------------------------------------###
   build: ->
     @model.setV($(JST["fully-loader-view"]()))
-    console.log @model.getE()
     @model.getE().append(@model.getV())
 
     #Class vars
