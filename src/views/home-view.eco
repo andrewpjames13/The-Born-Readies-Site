@@ -2,7 +2,7 @@
   <div class="hero">
     <div class="paper-bg"></div>
     <div class="centered-content">
-        <img src="/images/the-born-readies-logo.svg" alt="" />
+        <img class="home-logo" src="/images/the-born-readies-logo.png" alt="" />
     </div>
   </div>
 </div>

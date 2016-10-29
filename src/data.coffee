@@ -4,7 +4,7 @@ data = {
       "id": "home",
       "title": "Home",
       "slug": "",
-      "assets": ["/images/the-born-readies-logo.svg", "/images/ricepaper-texture.png"],
+      "assets": ["/images/the-born-readies-logo.png", "/images/ricepaper-texture.png"],
       "detail":{
         "sections":[]
       }
