@@ -28,8 +28,8 @@ class NavSliderController
     @direction_y = 0
     @current_range_y = 0
     @now = 0
-    @trans_y = 0
-    @swiped = false
+    # @trans_y = 0
+    # @swiped = false
 
   ###
   *------------------------------------------*
@@ -61,12 +61,12 @@ class NavSliderController
       @direction_y = @current_y - @start_y
       @current_range_y = if @start_y is 0 then 0 else Math.abs(@direction_y)
       @now = (new Date()).getTime()
-      resistance = if (@direction_y >= 0 and TBR.active_page_index is 0) or (@direction_y <= 0 and TBR.active_page_index is (TBR.total_pages - 1)) then 4 else 1
-      drag_y = ((@trans_y / 100) * @model.getE().height() + (@direction_y / resistance))
+      # resistance = if (@direction_y >= 0 and TBR.active_page_index is 0) or (@direction_y <= 0 and TBR.active_page_index is (TBR.total_pages - 1)) then 4 else 1
+      # drag_y = ((@trans_y / 100) * @model.getE().height() + (@direction_y / resistance))
 
       @model.getE()
         .addClass('dragging')
-        .css(TBR.utils.transform, TBR.utils.translate(0, "#{drag_y}px"))
+        # .css(TBR.utils.transform, TBR.utils.translate(0, "#{drag_y}px"))
 
       return false
 
@@ -77,25 +77,25 @@ class NavSliderController
   | Touch end.
   *----------------------------------------###
   onTouchend: (e)=>
+    @dragging = false
     if @model.getE().hasClass('dragging')
       @model.getE().removeClass('dragging')
 
       if (@now - @start_time < @drag_time and @current_range_y > (@model.getE().height() / 8)) or @current_range_y > (@model.getE().height() / 2)
-        @swiped = true
+        # @swiped = true
         if @current_y > @start_y
           @previousSlide()
         if @current_y < @start_y
           @nextSlide()
-      else
-        @slideTo()
+      # else
+      #   @slideTo()
 
-      @dragging = false
-      @swiped = false
+      # @swiped = false
       return false
 
-    else
-      @dragging = false
-      @swiped = false
+    # else
+    #   @dragging = false
+      # @swiped = false
 
   ###
   *------------------------------------------*
@@ -124,8 +124,8 @@ class NavSliderController
       href = TBR.data.pages[TBR.active_page_index - 1].slug
       History.pushState(null, null, "/#{href}")
       TBR.$body.trigger('footer_collapse')
-    else
-      @slideTo()
+    # else
+    #   @slideTo()
 
 
   nextSlide: =>
@@ -135,8 +135,8 @@ class NavSliderController
       History.pushState(null, null, "/#{href}")
       if TBR.total_pages - 1 is TBR.active_page_index
         TBR.$body.trigger('footer_expand')
-    else
-      @slideTo()
+    # else
+    #   @slideTo()
 
 
   ###
@@ -146,17 +146,17 @@ class NavSliderController
   | Set state.
   *----------------------------------------###
   slideTo: ->
-    @trans_y = -(TBR.active_page_index * 100)
-    if @swiped is true
-      @model.getE().addClass('swiped')
+    y = -(TBR.active_page_index * 100)
+    # if @swiped is true
+    #   @model.getE().addClass('swiped')
 
     @model.getE()
-      .css(TBR.utils.transform, TBR.utils.translate(0,"#{@trans_y}%"))
-      .off(TBR.utils.transition_end)
-      .one(TBR.utils.transition_end, =>
-        @model.getE()[0].offsetHeight
-        @model.getE().removeClass('dragging swiped')
-      )
+      .css(TBR.utils.transform, TBR.utils.translate(0,"#{y}%"))
+      # .off(TBR.utils.transition_end)
+      # .one(TBR.utils.transition_end, =>
+      #   @model.getE()[0].offsetHeight
+      #   @model.getE().removeClass('dragging swiped')
+      # )
 
   ###
   *------------------------------------------*
