@@ -142,10 +142,14 @@ class MerchController
   | Activate.
   *----------------------------------------###
   activate: ->
-    @model.getE()
-      .addClass('active')
-      .off("mousewheel.#{@id}")
-      .on("mousewheel.#{@id}", @onMousewheel)
+    @model.getE().addClass('active')
+
+    if TBR.router.getState().key.split(':')[1] is "detail"
+      console.log 'activate merch detail!'
+      @model.getE()
+        .off("mousewheel.#{@id}")
+        .on("mousewheel.#{@id}", @onMousewheel)
+
 
   ###
   *------------------------------------------*

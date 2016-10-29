@@ -54,7 +54,7 @@ class MainNavController
       .one(TBR.utils.transition_end, =>
         History.pushState(null, null, "/#{id}")
       )
-
+    $('#about, #merch').removeClass('detail-mode')
 
   toggleNav: =>
     if @model.getE().hasClass('show') is false
