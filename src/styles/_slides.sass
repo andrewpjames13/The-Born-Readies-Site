@@ -59,7 +59,7 @@
 
 
   svg#TBR
-    width: 20%
+    width: 15%
     @media screen and (min-width: 768px)
       width: 8%
 
@@ -71,15 +71,17 @@
 .centered-content
   position: absolute
   color: $gold
-  width: 50vw
+  width: 95vw
   height: auto
   top: 50%
   left: 50%
   transform: translate(-50%,-50%)
   text-align: center
+  @media screen and (min-width: 768px)
+    width: 50vw
 
   h1
-    font-size: 20vw
+    font-size: 25vw
     padding-right: 4vw
     transition: all 300ms $evil_ease
     @media screen and (min-width: 768px)
@@ -90,7 +92,7 @@
     max-width: 200px
     height: 50px
     border: 2px solid $gold
-    margin: 30px auto
+    margin: 20px auto
     color: $gold
     cursor: pointer
     font-size: 15px
@@ -98,6 +100,9 @@
     &:hover
       background-color: $gold
       color: $black
+
+    @media screen and (min-width: 768px)
+      margin: 30px auto
 
   &:hover
     h1
@@ -109,9 +114,11 @@
 
 #home .centered-content
   .home-logo
-    width: 100%
+    width: 75%
     height: auto
-    
+    @media screen and (min-width: 768px)
+      width: 100%
+
   @media screen and (min-width: 768px)
     width: 30vw
 

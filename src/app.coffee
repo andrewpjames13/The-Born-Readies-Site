@@ -213,12 +213,12 @@ class Application
   footerExpand: =>
     $('.footer-container').addClass('open')
     $('.bottom-border').animate { height: '3em' }, 800
-    $('#music-menu').animate { bottom: '1.5em' }, 800
+    $('#music-menu').animate { bottom: '2em' }, 800
     $('.menu-controls').animate { bottom: '.5' }, 800
 
   footerCollapse: =>
     $('.footer-container').removeClass('open')
-    $('.bottom-border').animate { height: '1.5em' }, 800
+    $('.bottom-border').animate { height: '1em' }, 800
     $('#music-menu').animate { bottom: '0' }, 800
     $('.menu-controls').animate { bottom: '0' }, 800
 
@@ -271,6 +271,7 @@ class Application
       @nav_slider_c.suspend()
       @$borders.addClass('black')
       @active_c.activate_detail()
+      @$borders.addClass('black')
       @$back_button
         .addClass('show')
         .on "click", ->
