@@ -38,6 +38,16 @@ class MerchController
     @in_detail = false
     @totalSections = @$section.length
 
+    # Draggable vars
+    @dragging = false
+    @drag_time = 512
+    @start_time = 0
+    @start_y = 0
+    @current_y = 0
+    @direction_y = 0
+    @current_range_y = 0
+    @now = 0
+    
     @observeSomeSweetEvents()
 
   observeSomeSweetEvents: ->
@@ -49,6 +59,72 @@ class MerchController
     href = TBR.data.pages[TBR.active_page_index].detail.slug
     History.pushState(null, null, "/#{href}")
     TBR.$body.trigger('footer_collapse')
+
+  ###
+  *------------------------------------------*
+  | onTouchstart:void (=)
+  |
+  | Touch start.
+  *----------------------------------------###
+  onTouchstart: (e) =>
+    if e.which is 1 or TBR.utils.is_mobile.any()
+      @dragging = true
+      @start_time = (new Date()).getTime()
+      @start_y = if Modernizr.touch then e.originalEvent.targetTouches[0].pageY else e.pageY
+
+      TBR.$doc
+        .off('mouseup.nav touchend.nav')
+        .one('mouseup.nav touchend.nav', @onTouchend)
+
+  ###
+  *------------------------------------------*
+  | onTouchmove:void (=)
+  |
+  | Touch move.
+  *----------------------------------------###
+  onTouchmove: (e) =>
+    if @dragging is true
+      e.preventDefault()
+
+      @current_y = if Modernizr.touch then e.originalEvent.targetTouches[0].pageY else e.pageY
+      @direction_y = @current_y - @start_y
+      @current_range_y = if @start_y is 0 then 0 else Math.abs(@direction_y)
+      @now = (new Date()).getTime()
+      # resistance = if (@direction_y >= 0 and TBR.active_page_index is 0) or (@direction_y <= 0 and TBR.active_page_index is (TBR.total_pages - 1)) then 4 else 1
+      # drag_y = ((@trans_y / 100) * @model.getE().height() + (@direction_y / resistance))
+
+      @model.getE()
+        .addClass('dragging')
+        # .css(TBR.utils.transform, TBR.utils.translate(0, "#{drag_y}px"))
+
+      return false
+
+  ###
+  *------------------------------------------*
+  | onTouchend:void (=)
+  |
+  | Touch end.
+  *----------------------------------------###
+  onTouchend: (e)=>
+    @dragging = false
+    if @model.getE().hasClass('dragging')
+      @model.getE().removeClass('dragging')
+
+      if (@now - @start_time < @drag_time and @current_range_y > (@model.getE().height() / 8)) or @current_range_y > (@model.getE().height() / 2)
+        # @swiped = true
+        if @current_y > @start_y
+          @previousSection()
+        if @current_y < @start_y
+          @nextSection()
+      # else
+      #   @slideTo()
+
+      # @swiped = false
+      return false
+
+    # else
+    #   @dragging = false
+      # @swiped = false
 
   ###
   *------------------------------------------*
@@ -146,8 +222,10 @@ class MerchController
 
     if TBR.router.getState().key.split(':')[1] is "detail"
       @model.getE()
-        .off("mousewheel.#{@id}")
-        .on("mousewheel.#{@id}", @onMousewheel)
+       .off("mousewheel.#{@id} mousedown.#{@id} touchstart.#{@id} mousemove.#{@id} touchmove.#{@id}")
+       .on("mousewheel.#{@id}", @onMousewheel)
+       .on("mousedown.#{@id} touchstart.#{@id}", @onTouchstart)
+       .on("mousemove.#{@id} touchmove.#{@id}", @onTouchmove)
 
 
   ###
@@ -159,6 +237,6 @@ class MerchController
   suspend: ->
     @model.getE()
       .removeClass('active')
-      .off("mousewheel.#{@id}")
+      .off("mousewheel.#{@id} mousedown.#{@id} touchstart.#{@id} mousemove.#{@id} touchmove.#{@id}")
 
 module.exports = MerchController
