@@ -47,14 +47,25 @@ class MainNavController
   onClickNavItem: (e) =>
     $t = $(e.currentTarget)
     id = if $t.attr('data-id') is 'home' then '' else $t.attr('data-id')
-
+    console.log $t
     @hideNav()
     @model.getE()
       .off(TBR.utils.transition_end)
       .one(TBR.utils.transition_end, =>
         History.pushState(null, null, "/#{id}")
       )
-    $('#about, #merch').removeClass('detail-mode')
+    if $t[0].innerHTML == 'Contact'
+      console.log 'hello', TBR.active_page_index, TBR.total_pages - 1
+      $('.footer-container').addClass('open')
+      $('.bottom-border').animate { height: '3em' }, 800
+      $('#music-menu').animate { bottom: '2em' }, 800
+      $('.menu-controls').animate { bottom: '.5' }, 800
+    else
+      $('#about, #merch').removeClass('detail-mode')
+      $('.footer-container').removeClass('open')
+      $('.bottom-border').animate { height: '1em' }, 800
+      $('#music-menu').animate { bottom: '0' }, 800
+      $('.menu-controls').animate { bottom: '0' }, 800
 
   toggleNav: =>
     if @model.getE().hasClass('show') is false
