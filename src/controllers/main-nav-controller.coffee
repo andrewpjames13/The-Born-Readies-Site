@@ -47,7 +47,7 @@ class MainNavController
   onClickNavItem: (e) =>
     $t = $(e.currentTarget)
     id = if $t.attr('data-id') is 'home' then '' else $t.attr('data-id')
-    console.log $t
+
     @hideNav()
     @model.getE()
       .off(TBR.utils.transition_end)
@@ -55,7 +55,6 @@ class MainNavController
         History.pushState(null, null, "/#{id}")
       )
     if $t[0].innerHTML == 'Contact'
-      console.log 'hello', TBR.active_page_index, TBR.total_pages - 1
       $('.footer-container').addClass('open')
       $('.bottom-border').animate { height: '3em' }, 800
       $('#music-menu').animate { bottom: '2em' }, 800
