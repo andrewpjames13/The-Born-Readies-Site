@@ -333,24 +333,45 @@
 
     .shirt
       .content
-        transform: translate(0, -50%)
+        transform: translate(0%, -20%)
         right: 0
+        @include respond-above($media_768)
+          transform: translate(0, -50%)
+        @include respond-above(1700px)
+          transform: translate(-25%, -50%)
         #shirt-white, #shirt-black
           &.hide-shirt
             display: none
         img
-          width: 70%
+          width: 100%
           float: right
+          @include respond-above($media_768)
+            width: 70%
+          @include respond-above(1700px)
+            width: 100%
+            
       .title
-        width: 50%
+        width: 100%
         left: unset
-        transform: translate(0%, -25%)
+        transform: translate(0%, -40%)
         opacity: 1
+        @include respond-above($media_768)
+          width: 50%
+          transform: translate(0%, -25%)
+
         .black, .white
-          height: 80px
-          margin: 50px 20%
+          height: 50px
+          margin: 20px 0% 20px 10%
+          width: 35%
+          float: left
           outline: 3px solid $gold
           cursor: pointer
+          @include respond-above($media_768)
+            height: 80px
+            margin: 50px 20%
+            float: none
+            width: auto
+
         .black
           background-color: $black
         .white
