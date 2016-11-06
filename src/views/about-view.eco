@@ -40,7 +40,7 @@
                 <svg viewBox="0 0 12.1 26.5">
                   <polygon fill="#A29060" points="4.9,26.2 0.1,26.2 7.2,13.3 0.1,0.3 4.9,0.3 12,13.3 "/>
                 </svg>
-            </a>
+              </a>
             </li>
             <li class="press-kit">
               <a> Download the Press Kit
@@ -91,12 +91,12 @@
         </div>
       </div>
       <div class="col-1-2 press-kit">
-        <a href="files/thebornreadies-press-kit.pdf" target="_blank">
+        <a href="/files/thebornreadies-press-kit.pdf" download="thebornreadies-press-kit.pdf">
           <div class="press-btn">
             <div class="content"></div>
             <div class="text">
               <p>Press Kit</p>
-              <p><a href="files/thebornreadies-press-kit.pdf" target="_blank">Click Here To Download</a></p>
+              <p>Click Here To Download</p>
             </div>
           </div>
         </a>
