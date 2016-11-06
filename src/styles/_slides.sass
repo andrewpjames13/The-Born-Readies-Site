@@ -349,7 +349,7 @@
             width: 70%
           @include respond-above(1700px)
             width: 100%
-            
+
       .title
         width: 100%
         left: unset
@@ -377,22 +377,17 @@
         .white
           background-color: $white
 #contact
-  .contact-list
-    font-family: $hell_vetica
-    svg
-      width: .4em
-      height: auto
-      margin-left: 10px
   .social-media
-    width: 70px
+    width: 200px
     margin: 0 auto
-    svg
-      float: left
-      width: 30px
-      #facebook, #instagram
-        transition: fill $speed $evil_ease
+    a
+      svg
+        float: left
+        width: 50px
+        #facebook, #instagram, #bandcamp, #mail
+          transition: fill $speed $evil_ease
+
+      &:hover
         cursor: pointer
-      #facebook:hover
-        fill: $white
-      #instagram:hover
-        fill: $white
+        #facebook, #instagram, #bandcamp, #mail
+          fill: $white
