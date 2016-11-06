@@ -21,6 +21,15 @@
       left: -1em
     svg
       width: 16%
+  &.home
+    .menu-controls
+      li
+        background-color: rgba(255, 255, 255, 0.8)
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0)
+    &.menu-open
+      .trigger
+        background-color: rgba(255, 255, 255, 0.3)
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0)
 
   &.menu-open
     width: 254px
@@ -37,13 +46,19 @@
       box-shadow: 4px 6px 5px 2px rgba(0, 0, 0, .5)
 
     li:first-child
-      transform: scale3d(1, 1, 1) translate3d(37.14px, -244.14px, 0)
+      transform: scale3d(1, 1, 1) translate3d(30.14px, -223.14px, 0)
+      @include respond-above($media_768)
+        transform: scale3d(1, 1, 1) translate3d(37.14px, -244.14px, 0)
 
     li:nth-child(2)
-      transform: scale3d(1, 1, 1) translate3d(136.14px, -211.14px, 0)
+      transform: scale3d(1, 1, 1) translate3d(119.14px, -188.14px, 0)
+      @include respond-above($media_768)
+        transform: scale3d(1, 1, 1) translate3d(136.14px, -211.14px, 0)
 
     li:nth-child(3)
-      transform: scale3d(1, 1, 1) translate3d(173px, -115px, 0)
+      transform: scale3d(1, 1, 1) translate3d(165px, -100px, 0)
+      @include respond-above($media_768)
+        transform: scale3d(1, 1, 1) translate3d(173px, -115px, 0)
 
   1x 5px 2px rgba(0, 0, 0, 0)
 
@@ -53,15 +68,17 @@
     left: 0
 
     li
-      width: 75px
-      height: 75px
+      width: 65px
+      height: 65px
       border-radius: 50%
       border: 2px solid $gold
       background-color: $black
       position: absolute
       transform: scale3d(0.5, 0.5, 1) translate3d(0,0,0)
       transition: transform 0.25s ease-out
-
+      @include respond-above($media_768)
+        width: 75px
+        height: 75px
 
       button
         svg
@@ -80,14 +97,14 @@
             opacity: 0
           &.pause-btn
             svg:first-child
-              opacity: 0
-            svg:last-child
               opacity: 1
+            svg:last-child
+              opacity: 0
           &.play-btn
             svg:first-child
-              opacity: 1
-            svg:last-child
               opacity: 0
+            svg:last-child
+              opacity: 1
 
       &:hover
         button

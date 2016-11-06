@@ -69,11 +69,14 @@ class SoundBarnController
   #  Player controls
   playPauseFlip: =>
     if @nowPlaying.paused
+      console.log 'test'
       @nowPlaying.play()
-      @$playPauseButton.removeClass("play-btn").addClass("pause-btn")
-    else
-      @nowPlaying.pause()
       @$playPauseButton.removeClass("pause-btn").addClass("play-btn")
+    else
+      console.log 'hey'
+      @nowPlaying.pause()
+      @$playPauseButton.removeClass("play-btn").addClass("pause-btn")
+
 
   nextSong: =>
     if @songInt < @tbrSongs.length - 1
