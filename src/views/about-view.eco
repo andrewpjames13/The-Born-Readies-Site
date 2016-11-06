@@ -49,13 +49,6 @@
                 </svg>
               </a>
             </li>
-            <li>
-              <a href="/contact">Contact
-                <svg viewBox="0 0 12.1 26.5">
-                  <polygon fill="#A29060" points="4.9,26.2 0.1,26.2 7.2,13.3 0.1,0.3 4.9,0.3 12,13.3 "/>
-                </svg>
-              </a>
-            </li>
           </ul>
           <div class="social-media">
             <a href="https://www.facebook.com/TheBornReadies/" target="_blank">
@@ -93,18 +86,20 @@
               	 M290.1,208.8v0.2l0.1-0.2H290.1z"/>
             </svg>
             </a>
-            
+
           </div>
         </div>
       </div>
       <div class="col-1-2 press-kit">
-        <div class="press-btn">
-          <div class="content"></div>
-          <div class="text">
-            <p>Press Kit</p>
-            <p><a>Click Here To Download</a></p>
+        <a href="files/thebornreadies-press-kit.pdf" target="_blank">
+          <div class="press-btn">
+            <div class="content"></div>
+            <div class="text">
+              <p>Press Kit</p>
+              <p><a href="files/thebornreadies-press-kit.pdf" target="_blank">Click Here To Download</a></p>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     </section>
     <section class="photos">

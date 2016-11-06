@@ -14,9 +14,9 @@
         </g>
       </svg>
       <h1>Contact</h1>
-      
+
       <div class="social-media">
-        <a href="mailto:shout@thebornreadies.com?Subject=Howdy%20Doody" target="_top">
+        <a href="mailto:shout@thebornreadies.band?Subject=Howdy%20Doody" target="_top">
           <svg viewBox="-20 -20 600 600">
               <path id="mail" fill="#A29060" d="M515.6,34.4H33.9l0.5,480.7l481.2,0.5V34.4z M414.2,174.3l-140,113.5l-140-113.5
               	C134.2,174.3,414.2,174.3,414.2,174.3z M414.4,374.5H134V204.2l140.2,113.6l140.2-113.6V374.5z"/>
