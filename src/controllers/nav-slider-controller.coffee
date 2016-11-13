@@ -41,7 +41,7 @@ class NavSliderController
     if e.which is 1 or TBR.utils.is_mobile.any()
       @dragging = true
       @start_time = (new Date()).getTime()
-      @start_y = if Modernizr.touch then e.originalEvent.targetTouches[0].pageY else e.pageY
+      @start_y = if Modernizr.touch then e.originalEvent.targetTouches?[0].pageY else e.pageY
 
       TBR.$doc
         .off('mouseup.nav touchend.nav')
