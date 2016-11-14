@@ -1,1 +1,5 @@
-<div class="circle"></div>
+<ul>
+  <% for i, p of TBR.data.pages: %>
+    <li class="circle <%= p.id %>" data-id="<%= p.id %>"></li>
+  <% end %>
+</ul>
