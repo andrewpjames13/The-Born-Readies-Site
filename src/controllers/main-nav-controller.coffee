@@ -66,6 +66,9 @@ class MainNavController
       $('#music-menu').animate { bottom: '0' }, 800
       $('.menu-controls').animate { bottom: '0' }, 800
 
+    if $('#music-menu').hasClass('home')
+      $('#music-menu').removeClass('home')
+
   toggleNav: =>
     if @model.getE().hasClass('show') is false
       @showNav()
