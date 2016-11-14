@@ -26,6 +26,7 @@ class MerchController
 
     # Class vars
     @$button = $('button', @model.getV())
+    @$detail_slider_container = $('.detail-slider-container', @model.getV())
     @$detail_slider = $('.detail-slider', @model.getV())
     @$section = $('section', @model.getV())
     @$black_shirt = $('#shirt-black', @model.getV())
@@ -47,7 +48,7 @@ class MerchController
     @direction_y = 0
     @current_range_y = 0
     @now = 0
-    
+
     @observeSomeSweetEvents()
 
   observeSomeSweetEvents: ->
@@ -73,8 +74,8 @@ class MerchController
       @start_y = if Modernizr.touch then e.originalEvent.targetTouches[0].pageY else e.pageY
 
       TBR.$doc
-        .off('mouseup.nav touchend.nav')
-        .one('mouseup.nav touchend.nav', @onTouchend)
+        .off("mouseup.#{@id} touchend.#{@id}")
+        .one("mouseup.#{@id} touchend.#{@id}", @onTouchend)
 
   ###
   *------------------------------------------*
@@ -221,7 +222,7 @@ class MerchController
     @model.getE().addClass('active')
 
     if TBR.router.getState().key.split(':')[1] is "detail"
-      @model.getE()
+      @$detail_slider_container
        .off("mousewheel.#{@id} mousedown.#{@id} touchstart.#{@id} mousemove.#{@id} touchmove.#{@id}")
        .on("mousewheel.#{@id}", @onMousewheel)
        .on("mousedown.#{@id} touchstart.#{@id}", @onTouchstart)
@@ -235,8 +236,7 @@ class MerchController
   | Activate.
   *----------------------------------------###
   suspend: ->
-    @model.getE()
-      .removeClass('active')
-      .off("mousewheel.#{@id} mousedown.#{@id} touchstart.#{@id} mousemove.#{@id} touchmove.#{@id}")
+    @model.getE().removeClass('active')
+    @$detail_slider_container.off("mousewheel.#{@id} mousedown.#{@id} touchstart.#{@id} mousemove.#{@id} touchmove.#{@id}")
 
 module.exports = MerchController

@@ -27,6 +27,7 @@ class AboutController
     # Class vars
 
     @$button = $('button', @model.getV())
+    @$detail_slider_container = $('.detail-slider-container', @model.getV())
     @$detail_slider = $('.detail-slider', @model.getV())
     @$section = $('section', @model.getV())
 
@@ -247,7 +248,7 @@ class AboutController
 
     if TBR.router.getState().key.split(':')[1] is "detail"
 
-      @model.getE()
+      @$detail_slider_container
        .off("mousewheel.#{@id} mousedown.#{@id} touchstart.#{@id} mousemove.#{@id} touchmove.#{@id}")
        .on("mousewheel.#{@id}", @onMousewheel)
        .on("mousedown.#{@id} touchstart.#{@id}", @onTouchstart)
@@ -259,8 +260,7 @@ class AboutController
   | Activate.
   *----------------------------------------###
   suspend: ->
-    @model.getE()
-    .removeClass('active')
-    .off("mousewheel.#{@id} mousedown.#{@id} touchstart.#{@id} mousemove.#{@id} touchmove.#{@id}")
+    @model.getE().removeClass('active')
+    @$detail_slider_container.off("mousewheel.#{@id} mousedown.#{@id} touchstart.#{@id} mousemove.#{@id} touchmove.#{@id}")
 
 module.exports = AboutController
