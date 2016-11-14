@@ -150,7 +150,6 @@ class MerchController
           , 666
 
   previousSection: =>
-    console.log TBR.data.pages[TBR.active_page_index].slug
     if @activeSectionIndex > 0
       @activeSectionIndex -= 1
       @updateDetailSlider()

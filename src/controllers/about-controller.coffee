@@ -112,8 +112,8 @@ class AboutController
       @start_y = if Modernizr.touch then e.originalEvent.targetTouches[0].pageY else e.pageY
 
       TBR.$doc
-        .off('mouseup.nav touchend.nav')
-        .one('mouseup.nav touchend.nav', @onTouchend)
+        .off("mouseup.#{@id} touchend.#{@id}")
+        .one("mouseup.#{@id} touchend.#{@id}", @onTouchend)
 
   ###
   *------------------------------------------*
