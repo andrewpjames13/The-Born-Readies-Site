@@ -10,6 +10,10 @@ SoundBarnController = require './controllers/sound-barn-controller'
 MainNavModel = require './models/base-model'
 MainNavController = require './controllers/main-nav-controller'
 
+# YouAreHere
+YouAreHereModel = require './models/base-model'
+YouAreHereController = require './controllers/you-are-here-controller'
+
 # Footer
 FooterModel = require './models/base-model'
 FooterController = require './controllers/footer-controller'
@@ -139,6 +143,12 @@ class Application
     @main_nav_m = new MainNavModel({'$el': $('#main-nav')})
     @main_nav_c = new MainNavController({
       'model': @main_nav_m
+    })
+
+    # MainNav
+    @you_are_here_m = new YouAreHereModel({'$el': $('#you-are-here')})
+    @you_are_here_c = new YouAreHereController({
+      'model': @you_are_here_m
     })
 
     # NavSlider
