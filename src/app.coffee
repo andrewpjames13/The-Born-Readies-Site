@@ -209,6 +209,9 @@ class Application
     # Trigger the initial route
     TBR.router.onAppStateChange()
 
+    #set active you are here state
+    @setActiveYouAreHere()
+
     # Custom events!
     TBR.$body
       .on('footer_expand', =>
@@ -217,8 +220,15 @@ class Application
       .on('footer_collapse', =>
         @footerCollapse()
       )
+      .on('set_active_you_are_here', =>
+        @setActiveYouAreHere()
+      )
 
     @$nav_button.on('click', @main_nav_c.toggleNav)
+
+  setActiveYouAreHere: =>
+    $(".here-nav").removeClass('active')
+    $("." + TBR.data.pages[TBR.active_page_index].id).addClass('active')
 
   footerExpand: =>
     $('.footer-container').addClass('open')

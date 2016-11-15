@@ -53,6 +53,7 @@ class MainNavController
       .off(TBR.utils.transition_end)
       .one(TBR.utils.transition_end, =>
         History.pushState(null, null, "/#{id}")
+        TBR.$body.trigger('set_active_you_are_here')
       )
     if $t[0].innerHTML == 'Contact'
       $('.footer-container').addClass('open')

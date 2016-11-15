@@ -1,5 +1,5 @@
 <ul>
   <% for i, p of TBR.data.pages: %>
-    <li class="circle <%= p.id %>" data-id="<%= p.id %>"></li>
+    <li class="here-nav <%= p.id %>" data-id="<%= p.id %>"></li>
   <% end %>
 </ul>

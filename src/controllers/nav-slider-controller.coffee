@@ -124,6 +124,7 @@ class NavSliderController
       href = TBR.data.pages[TBR.active_page_index - 1].slug
       History.pushState(null, null, "/#{href}")
       TBR.$body.trigger('footer_collapse')
+      TBR.$body.trigger('set_active_you_are_here')
     # else
     #   @slideTo()
 
@@ -133,6 +134,7 @@ class NavSliderController
       $('#music-menu').removeClass('home')
       href = TBR.data.pages[TBR.active_page_index + 1].slug
       History.pushState(null, null, "/#{href}")
+      TBR.$body.trigger('set_active_you_are_here')
       if TBR.total_pages - 1 is TBR.active_page_index
         TBR.$body.trigger('footer_expand')
     # else
