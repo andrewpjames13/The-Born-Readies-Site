@@ -44,6 +44,7 @@ class YouAreHereController
   | Click nav item, hide then update router
   *----------------------------------------###
   onClickNavItem: (e) =>
+
     $t = $(e.currentTarget)
     id = if $t.attr('data-id') is 'home' then '' else $t.attr('data-id')
 
@@ -52,19 +53,14 @@ class YouAreHereController
     @$nav_item.removeClass('active')
     $t.addClass('active')
 
-    if $t[0].innerHTML == 'Contact'
-      $('.footer-container').addClass('open')
-      $('.bottom-border').animate { height: '3em' }, 800
-      $('#music-menu').animate { bottom: '2em' }, 800
-      $('.menu-controls').animate { bottom: '.5' }, 800
-    else
-      $('#about, #merch').removeClass('detail-mode')
-      $('.footer-container').removeClass('open')
-      $('.bottom-border').animate { height: '1em' }, 800
-      $('#music-menu').animate { bottom: '0' }, 800
-      $('.menu-controls').animate { bottom: '0' }, 800
+    if TBR.active_page_index >= 0
+      TBR.$body.trigger('footer_collapse')
+      $('#music-menu').addClass('home')
 
-    if $('#music-menu').hasClass('home')
+    if TBR.total_pages - 1 is TBR.active_page_index
+      TBR.$body.trigger('footer_expand')
+
+    if TBR.active_page_index > 0
       $('#music-menu').removeClass('home')
 
 module.exports = YouAreHereController

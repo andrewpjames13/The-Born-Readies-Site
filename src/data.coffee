@@ -2,7 +2,7 @@ data = {
   "pages": [
     {
       "id": "home",
-      "title": "Home",
+      "title": "Intro",
       "slug": "",
       "assets": ["/images/the-born-readies-logo.png", "/images/ricepaper-texture.png"],
       "detail":{
