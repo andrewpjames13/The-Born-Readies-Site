@@ -14,6 +14,14 @@ MainNavController = require './controllers/main-nav-controller'
 YouAreHereModel = require './models/base-model'
 YouAreHereController = require './controllers/you-are-here-controller'
 
+# YouAreHereDetail
+YouAreHereDetailModel = require './models/base-model'
+YouAreHereDetailController = require './controllers/you-are-here-detail-controller'
+
+# YouAreHereAboutDetail
+YouAreHereAboutDetailModel = require './models/base-model'
+YouAreHereAboutDetailController = require './controllers/you-are-here-about-detail-controller'
+
 # Footer
 FooterModel = require './models/base-model'
 FooterController = require './controllers/footer-controller'
@@ -145,10 +153,22 @@ class Application
       'model': @main_nav_m
     })
 
-    # MainNav
+    # YouAreHere
     @you_are_here_m = new YouAreHereModel({'$el': $('#you-are-here')})
     @you_are_here_c = new YouAreHereController({
       'model': @you_are_here_m
+    })
+
+    # YouAreHereDetail
+    @you_are_here_detail_m = new YouAreHereDetailModel({'$el': $('#you-are-here-detail')})
+    @you_are_here_detail_c = new YouAreHereDetailController({
+      'model': @you_are_here_detail_m
+    })
+
+    # YouAreHereAboutDetail
+    @you_are_here_about_detail_m = new YouAreHereAboutDetailModel({'$el': $('#you-are-here-about-detail')})
+    @you_are_here_about_detail_c = new YouAreHereAboutDetailController({
+      'model': @you_are_here_about_detail_m
     })
 
     # NavSlider
@@ -292,6 +312,10 @@ class Application
       @$borders.addClass('black')
       @active_c.activate_detail()
       @$borders.addClass('black')
+      $('#you-are-here').addClass('hide')
+      $('.who').addClass('active')
+      $('.ep').addClass('active')
+
       @$back_button
         .addClass('show')
         .on "click", ->
@@ -303,6 +327,10 @@ class Application
       @nav_slider_c.activate()
       @$borders.removeClass('black')
       @$back_button.removeClass('show')
+      $('#you-are-here').removeClass('hide')
+      $('#you-are-here-detail').addClass('hide')
+      $('#you-are-here-about-detail').addClass('hide')
+      $('.here-nav-detail').removeClass('active')
       if TBR.router.getPreviousState().key.split(':')[1] is "detail"
         if @active_c.suspend_detail
           @active_c.suspend_detail()

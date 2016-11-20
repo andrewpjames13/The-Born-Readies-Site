@@ -20,9 +20,11 @@ data = {
         "slug": "about/detail"
         "sections": [
           {
+            "id": "who",
             "title": "Who We are"
           },
           {
+            "id": "photo",
             "title": "Photos",
             "photos": [
               "/images/TBR-photo-album-001.jpg",
@@ -47,10 +49,12 @@ data = {
         "slug": "merch/detail"
         "sections": [
           {
+            "id": "ep",
             "title": "Self Titled EP"
           },
           {
-            "title": "Born Readies Patch"
+            "id": "logo-shirt",
+            "title": "Born Readies shirt"
           }
         ]
       }

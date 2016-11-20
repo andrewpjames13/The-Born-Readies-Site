@@ -60,6 +60,7 @@ class MerchController
     href = TBR.data.pages[TBR.active_page_index].detail.slug
     History.pushState(null, null, "/#{href}")
     TBR.$body.trigger('footer_collapse')
+    $('#you-are-here-detail').removeClass('hide')
 
   ###
   *------------------------------------------*
@@ -151,9 +152,10 @@ class MerchController
 
   previousSection: =>
     if @activeSectionIndex > 0
+      $("." + TBR.data.pages[2].detail.sections[@activeSectionIndex].id).removeClass('active')
       @activeSectionIndex -= 1
       @updateDetailSlider()
-
+      $("." + TBR.data.pages[2].detail.sections[@activeSectionIndex].id).addClass('active')
       TBR.$body.trigger('footer_collapse')
 
     else if @activeSectionIndex == 0
@@ -163,9 +165,10 @@ class MerchController
 
   nextSection: =>
     if @activeSectionIndex < @totalSections - 1
+      $("." + TBR.data.pages[2].detail.sections[@activeSectionIndex].id).removeClass('active')
       @activeSectionIndex += 1
       @updateDetailSlider()
-
+      $("." + TBR.data.pages[2].detail.sections[@activeSectionIndex].id).addClass('active')
       if @totalSections - 1 is @activeSectionIndex
         TBR.$body.trigger('footer_expand')
 

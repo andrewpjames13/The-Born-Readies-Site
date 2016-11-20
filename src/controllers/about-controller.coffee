@@ -98,6 +98,7 @@ class AboutController
   moveItOnOver: =>
     href = TBR.data.pages[TBR.active_page_index].detail.slug
     History.pushState(null, null, "/#{href}")
+    $('#you-are-here-about-detail').removeClass('hide')
 
   ###
   *------------------------------------------*
@@ -192,15 +193,19 @@ class AboutController
       href = TBR.data.pages[TBR.active_page_index].slug
       History.pushState(null, null, "/#{href}")
     else if @activeSectionIndex > 0
+      $("." + TBR.data.pages[1].detail.sections[@activeSectionIndex].id).removeClass('active')
       @activeSectionIndex -= 1
       @updateDetailSlider()
+      $("." + TBR.data.pages[1].detail.sections[@activeSectionIndex].id).addClass('active')
 
       TBR.$body.trigger('footer_collapse')
 
   nextSection: =>
     if @activeSectionIndex < @totalSections - 1
+      $("." + TBR.data.pages[1].detail.sections[@activeSectionIndex].id).removeClass('active')
       @activeSectionIndex += 1
       @updateDetailSlider()
+      $("." + TBR.data.pages[1].detail.sections[@activeSectionIndex].id).addClass('active')
 
       if @totalSections - 1 is @activeSectionIndex
         TBR.$body.trigger('footer_expand')
