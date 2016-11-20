@@ -1,9 +1,11 @@
-#you-are-here
+#you-are-here, #you-are-here-detail, #you-are-here-about-detail
   position: absolute
   right: 25px
   top: 50%
   opacity: .5
+  visibility: visible
   transform: translateY(-50%)
+  transition: visibility 500ms linear $speed, opacity $speed-metal $evil-ease
   @include respond-above($media_768)
     right: 35px
 
@@ -18,48 +20,6 @@
 
     &.active
       background-color: $gold
-
-  &.hide
-    visibility: hidden
-    opacity: 0
-
-#you-are-here-detail
-  position: absolute
-  right: 25px
-  top: 50%
-  opacity: .5
-  visibility: visible
-  transform: translateY(-50%)
-  transition: visibility 500ms linear $speed, opacity $speed-metal $evil-ease
-  @include respond-above($media_768)
-    right: 35px
-
-  .here-nav-detail
-    border: $gold 2px solid
-    border-radius: 50%
-    width: 10px
-    height: 10px
-    margin-bottom: 10px
-    cursor: pointer
-    transition: background-color $speed-metal $evil-ease
-
-    &.active
-      background-color: $gold
-
-  &.hide
-    visibility: hidden
-    opacity: 0
-
-#you-are-here-about-detail
-  position: absolute
-  right: 25px
-  top: 50%
-  opacity: .5
-  visibility: visible
-  transform: translateY(-50%)
-  transition: visibility 500ms linear $speed, opacity $speed-metal $evil-ease
-  @include respond-above($media_768)
-    right: 35px
 
   .here-nav-detail
     border: $gold 2px solid

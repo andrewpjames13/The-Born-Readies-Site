@@ -1,0 +1,5 @@
+<ul>
+  <% for i, p of TBR.data.pages[1].detail.sections: %>
+    <li class="here-nav-detail <%= p.id %>" data-id="<%= p.id %>"></li>
+  <% end %>
+</ul>
