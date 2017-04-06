@@ -258,6 +258,7 @@ class AboutController
        .on("mousewheel.#{@id}", @onMousewheel)
        .on("mousedown.#{@id} touchstart.#{@id}", @onTouchstart)
        .on("mousemove.#{@id} touchmove.#{@id}", @onTouchmove)
+        
   ###
   *------------------------------------------*
   | suspend:void (-)
