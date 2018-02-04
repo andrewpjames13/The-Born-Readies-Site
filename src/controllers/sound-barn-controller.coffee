@@ -69,12 +69,12 @@ class SoundBarnController
   #  Player controls
   playPauseFlip: =>
     if @nowPlaying.paused
-      console.log 'test'
       @nowPlaying.play()
+      @$trigger.addClass("on")
       @$playPauseButton.removeClass("pause-btn").addClass("play-btn")
     else
-      console.log 'hey'
       @nowPlaying.pause()
+      @$trigger.removeClass("on")
       @$playPauseButton.removeClass("play-btn").addClass("pause-btn")
 
 

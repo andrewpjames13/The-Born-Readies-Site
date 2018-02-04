@@ -8,7 +8,7 @@
   cursor: pointer
 
   .trigger
-    width: 110px
+    width: 106px
     height: 115px
     border-radius: 50%
     position: absolute
@@ -22,6 +22,18 @@
     svg
       width: 25%
       fill: $gold
+
+    .unMuted
+      display: none
+    .muted
+      display: inline
+
+    &.on
+      .unMuted
+        display: inline
+      .muted
+        display: none
+
   &.home
     .menu-controls
       li
