@@ -26,7 +26,7 @@ class SoundBarnController
     #Class vars
     @$pauseIcon = $("#pause-icon", @model.getV())
     @$playIcon = $('#play-icon', @model.getV())
-    @tbrSongs = ["You Really Turn Me On", "Wildside", "Get After It", "Fallen"]
+    @tbrSongs = ["Automatic", "Wildside", "Solid Six"]
     @songInt = 0
     @nowPlaying = new Audio("songs/" + @tbrSongs[@songInt] + ".mp3")
     @randomSongInt = 0
